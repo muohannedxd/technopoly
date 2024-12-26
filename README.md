@@ -36,7 +36,7 @@ cd technopoly
 
 ```bash
 npm install
-or
+# or
 yarn dev
 ```
 

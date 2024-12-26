@@ -1,22 +1,16 @@
 import { useState } from "react";
 import {
-  NavigationMenu,
-  NavigationMenuItem,
-  NavigationMenuList,
-} from "@/components/ui/navigation-menu";
-import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
-import { ModeToggle } from "./mode-toggle";
-import { LogoIcon } from "./Icons";
+import { HashLink } from "react-router-hash-link";
+import LogoIcon from "@/assets/logo/Inline_Dark_Transparent_PNG.png";
 
 interface RouteProps {
   href: string;
@@ -25,48 +19,46 @@ interface RouteProps {
 
 const routeList: RouteProps[] = [
   {
-    href: "#features",
-    label: "Features",
+    href: "#about",
+    label: "About Us",
   },
   {
-    href: "#testimonials",
-    label: "Testimonials",
+    href: "#agenda",
+    label: "Agenda",
   },
   {
-    href: "#pricing",
-    label: "Pricing",
+    href: "#sponsors",
+    label: "Sponsors",
   },
   {
     href: "#faq",
     label: "FAQ",
+  },
+  {
+    href: "#contact",
+    label: "Contact",
   },
 ];
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white dark:border-b-slate-700 dark:bg-background">
+    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white">
       <div className="mx-auto">
-        <div className="container h-14 px-4 flex justify-between items-center">
+        <div className="h-14 px-4 flex justify-between items-center">
           <div className="font-bold flex">
-            <a
+            <HashLink
               rel="noreferrer noopener"
-              href="/"
+              to="/"
               className="ml-2 font-bold text-xl flex"
             >
-              <LogoIcon />
-              ShadcnUI/React
-            </a>
+              <img className="h-10" src={LogoIcon} />
+            </HashLink>
           </div>
 
           {/* mobile */}
           <span className="flex md:hidden">
-            <ModeToggle />
-
-            <Sheet
-              open={isOpen}
-              onOpenChange={setIsOpen}
-            >
+            <Sheet open={isOpen} onOpenChange={setIsOpen}>
               <SheetTrigger className="px-2">
                 <Menu
                   className="flex md:hidden h-5 w-5"
@@ -84,19 +76,19 @@ export const Navbar = () => {
                 </SheetHeader>
                 <nav className="flex flex-col justify-center items-center gap-2 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
-                    <a
+                    <HashLink
                       rel="noreferrer noopener"
                       key={label}
-                      href={href}
+                      to={href}
                       onClick={() => setIsOpen(false)}
                       className={buttonVariants({ variant: "ghost" })}
                     >
                       {label}
-                    </a>
+                    </HashLink>
                   ))}
-                  <a
+                  <HashLink
                     rel="noreferrer noopener"
-                    href="https://github.com/leoMirandaa/shadcn-landing-page.git"
+                    to="https://github.com/leoMirandaa/shadcn-landing-page.git"
                     target="_blank"
                     className={`w-[110px] border ${buttonVariants({
                       variant: "secondary",
@@ -104,40 +96,36 @@ export const Navbar = () => {
                   >
                     <GitHubLogoIcon className="mr-2 w-5 h-5" />
                     Github
-                  </a>
+                  </HashLink>
                 </nav>
               </SheetContent>
             </Sheet>
           </span>
 
           {/* desktop */}
-          <nav className="hidden md:flex gap-2">
+          <nav className="hidden md:flex lg:gap-6">
             {routeList.map((route: RouteProps, i) => (
-              <a
+              <HashLink
                 rel="noreferrer noopener"
-                href={route.href}
+                to={route.href}
                 key={i}
                 className={`text-[17px] ${buttonVariants({
-                  variant: "ghost",
+                  variant: "link",
                 })}`}
               >
                 {route.label}
-              </a>
+              </HashLink>
             ))}
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <a
+            <HashLink
               rel="noreferrer noopener"
-              href="https://github.com/leoMirandaa/shadcn-landing-page.git"
-              target="_blank"
+              to="/register"
               className={`border ${buttonVariants({ variant: "secondary" })}`}
             >
-              <GitHubLogoIcon className="mr-2 w-5 h-5" />
-              Github
-            </a>
-
-            <ModeToggle />
+              Register
+            </HashLink>
           </div>
         </div>
       </div>

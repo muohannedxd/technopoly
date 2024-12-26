@@ -1,5 +1,3 @@
-import { LogoIcon } from "./Icons";
-
 export const Footer = () => {
   return (
     <footer id="footer">
@@ -12,8 +10,7 @@ export const Footer = () => {
             href="/"
             className="font-bold text-xl flex"
           >
-            <LogoIcon />
-            ShadcnUI/React
+            LOGO
           </a>
         </div>
 
