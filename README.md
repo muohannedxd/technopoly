@@ -37,7 +37,7 @@ cd technopoly
 ```bash
 npm install
 # or
-yarn dev
+yarn install
 ```
 
 4. Run project
