@@ -43,7 +43,7 @@ const routeList: RouteProps[] = [
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky border-b-[1px] top-0 z-40 w-full bg-white">
+    <header className="sticky top-0 z-40 w-full bg-grid-pattern bg-white text-foreground  shadow-md">
       <div className="mx-auto">
         <div className="h-14 px-4 flex justify-between items-center">
           <div className="font-bold flex">

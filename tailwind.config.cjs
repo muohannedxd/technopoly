@@ -50,6 +50,15 @@ module.exports = {
           foreground: "hsl(var(--card-foreground))",
         },
       },
+      backgroundImage: {
+        'grid-pattern': `
+          linear-gradient(to right, rgba(173, 216, 230, 0.5) 1px, transparent 1px), 
+          linear-gradient(to bottom, rgba(173, 216, 230, 0.5) 1px, transparent 1px)
+        `,
+      },
+      backgroundSize: {
+        'grid-pattern': '50px 50px',
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
