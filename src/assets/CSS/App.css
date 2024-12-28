@@ -17,8 +17,11 @@
     --primary: 222.2 47.4% 11.2%;
     --primary-foreground: 210 40% 98%;
 
-    --secondary: 210 40% 96.1%;
+    --secondary: 48 77% 88%; /* beige */
     --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --third: 37 98% 49%; /* orange */
+    --third-darker: 30 98% 49%;
 
     --muted: 210 40% 96.1%;
     --muted-foreground: 215.4 16.3% 46.9%;
@@ -48,6 +51,12 @@
   font-family: "ProdutSans";
   src: local("ProdutSans"),
     url("../fonts/ProductSans-Medium.ttf") format("truetype");
+  font-weight: 400;
+}
+@font-face {
+  font-family: "Montserrat";
+  src: local("Montserrat"),
+    url("../fonts/Montserrat-VariableFont_wght.ttf") format("truetype");
   font-weight: 400;
 }
 
