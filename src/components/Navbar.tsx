@@ -17,7 +17,7 @@ import CustomButton from "./CustomButton";
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky top-0 z-40 w-full bg-grid-pattern bg-white text-foreground  shadow-md">
+    <header className="sticky py-1 top-0 z-40 w-full bg-grid-pattern bg-[length:50px_50px] bg-white text-foreground shadow-md">
       <div className="mx-auto">
         <div className="h-14 px-4 flex justify-between items-center">
           <div className="font-bold flex">
