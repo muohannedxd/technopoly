@@ -6,8 +6,8 @@ export interface FAQProps {
 
 export const FAQList: FAQProps[] = [
   {
-    question: "Is this template free?",
-    answer: "Yes. It is a free ChadcnUI template.",
+    question: "What is Technopoly?",
+    answer: "Technopoly is a mix of both ideathon and case competition",
     value: "item-1",
   },
   {
@@ -27,12 +27,5 @@ export const FAQList: FAQProps[] = [
     question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
     answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
     value: "item-4",
-  },
-  {
-    question:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur natus?",
-    answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
-    value: "item-5",
-  },
+  }
 ];
