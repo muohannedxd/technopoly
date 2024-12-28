@@ -11,34 +11,7 @@ import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
 import LogoIcon from "@/assets/logo/Inline_Dark_Transparent_PNG.png";
-
-interface RouteProps {
-  href: string;
-  label: string;
-}
-
-const routeList: RouteProps[] = [
-  {
-    href: "#about",
-    label: "About Us",
-  },
-  {
-    href: "#agenda",
-    label: "Agenda",
-  },
-  {
-    href: "#sponsors",
-    label: "Sponsors",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-];
+import { routeList, RouteProps } from "@/lib/data/navbar.data";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
