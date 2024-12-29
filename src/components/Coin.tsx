@@ -1,12 +1,13 @@
 import React from 'react';
+import Coin from "../assets/coin.png"
+
 
 interface ImageProps {
-  src: string;
   position: { top: string; left: string; angle: string };
   rotationDegree: number;
 }
 
-const RotatingImage: React.FC<ImageProps> = ({ src, position, rotationDegree }) => {
+const RotatingImage: React.FC<ImageProps> = ({position, rotationDegree }) => {
   const styles: React.CSSProperties = {
     position: 'absolute',
     top: position.top,
@@ -15,7 +16,7 @@ const RotatingImage: React.FC<ImageProps> = ({ src, position, rotationDegree }) 
     transition: 'transform 0.5s ease',
   };
 
-  return <img src={src} alt="coin" style={styles} className="h-20 w-24" />;
+  return <img src={Coin} alt="coin" style={styles} className="h-20 w-24" />;
 };
 
 export default RotatingImage;
