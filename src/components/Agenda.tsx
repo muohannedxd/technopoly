@@ -72,7 +72,6 @@ export const Agenda = () => {
           />
 
           <RotatingCoin
-            src={Coin} 
             position={generatePosition()}
             rotationDegree={getRandomRotation()}
           />
