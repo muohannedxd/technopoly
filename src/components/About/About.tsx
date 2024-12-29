@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function About() {
   const [selectedId, setSelectedId] = useState(0);
+  const currentCard = AboutUsList[selectedId];
 
   return (
     <section
@@ -17,13 +18,13 @@ export default function About() {
 
       <div className="w-full flex flex-col md:flex-row gap-8">
         {/** Selected Card */}
-        <AboutCard aboutus={AboutUsList[selectedId]} />
-        <div className="border-[0.4em] border-third rounded-3xl p-6 lg:p-10 my-2">
+        <AboutCard aboutus={currentCard} />
+        <div className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-6 lg:p-10 my-2`}>
           <div className="relative text-lg md:text-xl lg:text-2xl font-medium mb-4">
             <span className="">
               <img src={Quote} alt="Quote" className="h-5" />
             </span>
-            {AboutUsList[selectedId].description}
+            {currentCard.description}
             <span className="absolute px-2">
               <img src={Quote} alt="Quote" className="h-5 rotate-180" />
             </span>
