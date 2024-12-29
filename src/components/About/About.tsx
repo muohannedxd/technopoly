@@ -38,7 +38,7 @@ export default function About() {
             <div
               onClick={() => setSelectedId(aboutus.id)}
               key={aboutus.id}
-              className={`relative transform cursor-pointer ${
+              className={`relative transform cursor-pointer hover:scale-105 transition-all duration-300 ${
                 index === 0
                   ? "rotate-[-10deg] translate-x-20 sm:translate-x-12 z-10"
                   : "rotate-[10deg] -translate-y-4 translate-x-4 sm:translate-x-0 z-10"
