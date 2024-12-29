@@ -1,6 +1,6 @@
 import GDG from "@/assets/images/gdg.png"
 import Excellence from "@/assets/images/excellence.png"
-import Technopoly from "@/assets/logo/Inline_Dark_Transparent_PNG.png"
+import Technopoly from "@/assets/logo/Minimal_Dark_Transparent_PNG.png"
 
 export interface AboutProps {
   id: number;
