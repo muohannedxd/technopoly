@@ -2,7 +2,6 @@ import { useState } from "react";
 import gameDie2 from "../assets/gameDie2.png";
 import gameDie4 from "../assets/gameDie4.png";
 import { dayContent } from "../lib/data/agenda.data";
-import RotatingCoin from "./Coin";
 
 export const Agenda = () => {
   const [currentDot, setCurrentDot] = useState<number>(1);
@@ -11,6 +10,7 @@ export const Agenda = () => {
     setCurrentDot((prev) => (prev === 3 ? 1 : prev + 1));
   };
 
+  /*
   const generatePosition = () => {
     const top = `${40}%`; 
     const left = `${110}%`;
@@ -21,6 +21,7 @@ export const Agenda = () => {
   const getRandomRotation = () => {
     return 0;
   };
+  */
 
   return (
     <div className="w-full flex justify-center content-center flex-col items-center">
@@ -68,11 +69,6 @@ export const Agenda = () => {
             src={gameDie4}
             alt="Dice"
             className="absolute bottom-[-45px] right-[-30px] w-[100px] h-[100px]"
-          />
-
-          <RotatingCoin
-            position={generatePosition()}
-            rotationDegree={getRandomRotation()}
           />
         </div>
       </section>

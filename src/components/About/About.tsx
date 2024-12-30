@@ -76,9 +76,9 @@ export default function About() {
 
         {/** Description */}
         <div
-          className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-6 lg:p-10 my-2`}
+          className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-4 md:p-6 lg:p-10 my-2 h-[22em]`}
         >
-          <div className="relative text-lg md:text-xl lg:text-2xl font-medium mb-4">
+          <div className="relative text-base md:text-xl lg:text-2xl font-medium mb-2">
             <span className="">
               <img src={Quote} alt="Quote" className="h-5" />
             </span>
