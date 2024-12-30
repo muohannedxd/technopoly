@@ -5,6 +5,7 @@ import { useState } from "react";
 
 export default function About() {
   const [selectedId, setSelectedId] = useState(0);
+
   const currentCard = AboutUsList[selectedId];
 
   return (
@@ -18,8 +19,30 @@ export default function About() {
 
       <div className="w-full flex flex-col md:flex-row gap-8">
         {/** Selected Card */}
-        <AboutCard aboutus={currentCard} />
-        <div className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-6 lg:p-10 my-2`}>
+        <div>
+          <AboutCard aboutus={currentCard} />
+          {/** Other Cards */}
+          <div className="absolute right-10 bottom-28 sm:bottom-32 md:bottom-10 flex flex-row">
+            {AboutUsList.filter((item) => item.id !== selectedId).map(
+              (aboutus, index) => (
+                <div
+                  onClick={() => setSelectedId(aboutus.id)}
+                  key={aboutus.id}
+                  className={`relative transform cursor-pointer hover:scale-105 transition-all duration-300 ${
+                    index === 0
+                      ? "rotate-[-10deg] translate-x-20 sm:translate-x-12 z-10"
+                      : "rotate-[10deg] -translate-y-4 translate-x-4 sm:translate-x-0 z-10"
+                  }`}
+                >
+                  <AboutCard aboutus={aboutus} />
+                </div>
+              )
+            )}
+          </div>
+        </div>
+        <div
+          className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-6 lg:p-10 my-2`}
+        >
           <div className="relative text-lg md:text-xl lg:text-2xl font-medium mb-4">
             <span className="">
               <img src={Quote} alt="Quote" className="h-5" />
@@ -30,24 +53,6 @@ export default function About() {
             </span>
           </div>
         </div>
-      </div>
-      {/** Other Cards */}
-      <div className="absolute right-10 bottom-28 sm:bottom-32 md:bottom-10 flex flex-row">
-        {AboutUsList.filter((item) => item.id !== selectedId).map(
-          (aboutus, index) => (
-            <div
-              onClick={() => setSelectedId(aboutus.id)}
-              key={aboutus.id}
-              className={`relative transform cursor-pointer hover:scale-105 transition-all duration-300 ${
-                index === 0
-                  ? "rotate-[-10deg] translate-x-20 sm:translate-x-12 z-10"
-                  : "rotate-[10deg] -translate-y-4 translate-x-4 sm:translate-x-0 z-10"
-              }`}
-            >
-              <AboutCard aboutus={aboutus} />
-            </div>
-          )
-        )}
       </div>
     </section>
   );
