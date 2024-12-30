@@ -2,7 +2,6 @@
 
 The main website for Technopoly event.
 
-
 ## How to install
 
 1. Clone this repository:
