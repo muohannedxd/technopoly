@@ -1,45 +1,80 @@
 import AboutCard from "./AboutCard";
 import { AboutUsList } from "@/lib/data/aboutus.data";
 import Quote from "@/assets/icons/initial_quote.png";
-import { useState } from "react";
+import { useRef, useState } from "react";
+import "@/assets/CSS/About.css"
 
 export default function About() {
   const [selectedId, setSelectedId] = useState(0);
-
   const currentCard = AboutUsList[selectedId];
+
+  const cardRefs = [
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
+  ];
+
+  const cardClasses = [
+    "z-20",
+    `
+    card1_translation
+    `,
+    `
+    card2_translation
+    `,
+  ];
+
+  const handleSwap = (newId: number) => {
+    if (newId === selectedId) return;
+    const currentClass = cardRefs[selectedId].current?.className;
+    const newClass = cardRefs[newId].current?.className;
+    if (currentClass && newClass) {
+      cardRefs[selectedId].current!.className = newClass;
+      cardRefs[newId].current!.className = currentClass;
+    }
+    setSelectedId(newId);
+  };
 
   return (
     <section
       id="about"
-      className="container relative pt-14 sm:pt-22 pb-96 justify-center items-center flex flex-col gap-8"
+      className="container pt-14 sm:pt-22 pb-[44vh] justify-center items-center flex flex-col gap-8"
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">About Us</p>
       </div>
 
-      <div className="w-full flex flex-col md:flex-row gap-8">
-        {/** Selected Card */}
-        <div>
-          <AboutCard aboutus={currentCard} />
-          {/** Other Cards */}
-          <div className="absolute right-10 bottom-28 sm:bottom-32 md:bottom-10 flex flex-row">
-            {AboutUsList.filter((item) => item.id !== selectedId).map(
-              (aboutus, index) => (
-                <div
-                  onClick={() => setSelectedId(aboutus.id)}
-                  key={aboutus.id}
-                  className={`relative transform cursor-pointer hover:scale-105 transition-all duration-300 ${
-                    index === 0
-                      ? "rotate-[-10deg] translate-x-20 sm:translate-x-12 z-10"
-                      : "rotate-[10deg] -translate-y-4 translate-x-4 sm:translate-x-0 z-10"
-                  }`}
-                >
-                  <AboutCard aboutus={aboutus} />
-                </div>
-              )
-            )}
-          </div>
+      <div className="relative w-full flex flex-col md:flex-row gap-8">
+        {/** Cards */}
+        <div
+          ref={cardRefs[0]}
+          onClick={() => handleSwap(0)}
+          className={`transition-all duration-300 ease-linear ${cardClasses[0]}`}
+        >
+          <AboutCard aboutus={AboutUsList[0]} />
         </div>
+        <div
+          ref={cardRefs[1]}
+          onClick={() => handleSwap(1)}
+          className={`transition-all duration-300 ease-linear flex-end
+              absolute rotate-[-10deg] z-10 cursor-pointer hover:scale-105
+              ${cardClasses[1]}
+              `}
+        >
+          <AboutCard aboutus={AboutUsList[1]} />
+        </div>
+        <div
+          ref={cardRefs[2]}
+          onClick={() => handleSwap(2)}
+          className={`transition-all duration-300 ease-linear 
+              absolute rotate-[10deg] z-10 cursor-pointer hover:scale-105
+              ${cardClasses[2]}
+              `}
+        >
+          <AboutCard aboutus={AboutUsList[2]} />
+        </div>
+
+        {/** Description */}
         <div
           className={`border-[0.4em] ${currentCard.borderColor} rounded-3xl p-6 lg:p-10 my-2`}
         >

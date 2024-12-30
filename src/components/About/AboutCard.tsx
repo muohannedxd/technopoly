@@ -9,7 +9,7 @@ export default function AboutCard({aboutus}: AboutCardProps) {
   return (
     <div
       key={aboutus.id}
-      className={`container bg-secondary p-4 rounded-3xl shadow-sm max-w-[14em] lg:max-w-[16em] min-w-[14em] lg:min-w-[16em] mx-auto`}
+      className={`container bg-secondary p-4 rounded-3xl shadow-sm max-w-[12em] sm:max-w-[14em] lg:max-w-[16em] min-w-[12em] sm:min-w-[14em] lg:min-w-[16em] mx-auto`}
     >
       <Card className="rounded-2xl border-[0.35em] border-black">
         <CardHeader className={`rounded-t-xl ${aboutus.background} flex py-2 justify-center items-center border-b-[0.35em] border-black text-center`}>
