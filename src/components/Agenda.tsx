@@ -3,7 +3,6 @@ import gameDie2 from "../assets/gameDie2.png";
 import gameDie4 from "../assets/gameDie4.png";
 import { dayContent } from "../lib/data/agenda.data";
 import RotatingCoin from "./Coin";
-import Coin from "../assets/coin.png"
 
 export const Agenda = () => {
   const [currentDot, setCurrentDot] = useState<number>(1);
