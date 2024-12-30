@@ -5,6 +5,7 @@ import { Navbar } from '@/components/Navbar'
 import { ScrollToTop } from '@/components/ScrollToTop'
 import { Agenda } from '@/components/Agenda'
 import About from '@/components/About/About'
+import Sponsors from '@/components/Sponsors'
 
 export default function Home() {
   return (
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <About />
       <Agenda/>
+      <Sponsors />
       <FAQ />
       <Footer />
       <ScrollToTop />

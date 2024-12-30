@@ -90,7 +90,7 @@ export default function About() {
           </div>
         </div>
         {/** dice */}
-        <div className="absolute translate-y-96 hidden md:flex">
+        <div className="absolute translate-y-96 hidden md:flex transition-all duration-200 hover:rotate-12">
           <img src={Dice} alt="dice" />
         </div>
       </div>
