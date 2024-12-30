@@ -1,7 +1,8 @@
-import AboutCard from "./AboutCard";
-import { AboutUsList } from "@/lib/data/aboutus.data";
-import Quote from "@/assets/icons/initial_quote.png";
 import { useRef, useState } from "react";
+import { AboutUsList } from "@/lib/data/aboutus.data";
+import AboutCard from "./AboutCard";
+import Quote from "@/assets/icons/initial_quote.png";
+import Dice from "@/assets/images/aboutDice.png";
 import "@/assets/CSS/About.css"
 
 export default function About() {
@@ -87,6 +88,10 @@ export default function About() {
               <img src={Quote} alt="Quote" className="h-5 rotate-180" />
             </span>
           </div>
+        </div>
+        {/** dice */}
+        <div className="absolute translate-y-96 hidden md:flex">
+          <img src={Dice} alt="dice" />
         </div>
       </div>
     </section>
