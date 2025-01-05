@@ -122,3 +122,113 @@
     background-color: #fbf8f8d8;
   }
 }
+.flex-row{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+ 
+  
+}
+.flex-column{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  
+}
+.flex-row-space{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+
+}
+.MonopolyBoard{
+  
+  display: flex;
+  background: url('src/assets/logo/technopoly.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  background-color: #BEDCFA;
+
+  
+}
+.containerRectangle{
+  flex: 1;
+  border-width: 3px;
+  border-color: #323232;
+  display: flex;
+  flex-direction: column;
+  height: 22vh;
+
+}
+.MonopolyRectangle{
+  background-color: #EFE8D8;
+  flex: 1;
+  
+}
+.partie_inf{
+  
+  height: 4vh;
+  border-top-width: 3px;
+  border-bottom-width: 3px;
+  border-color: #323232;
+}
+.MonopolySquare {
+  
+  background-color: #EFE8D8;
+  height: 22vh;
+  width: 35vh;
+  border-width: 3px;
+  border-color: #323232;
+}
+.MonopolyRotated{
+  background-color: #EFE8D8;
+  width: 22vh;
+  height: 14vh;
+  
+  
+}
+.containerRectangleRotated{
+  flex: 1;
+  border-width: 3px;
+  border-color: #323232;
+  display: flex;
+  flex-direction: row;
+  height: 14vh;
+
+}
+.partie_inf2{
+  
+  width: 4vh;
+  height: 100%;
+  background-color: aqua;
+  border-left-width: 3px;
+  border-right-width: 3px;
+  border-color: #323232;
+}
+.containerRectangleRotated1{
+  
+  border-width: 3px;
+  border-color: #323232;
+  background-size: 150px;
+  background-repeat: no-repeat;
+  height: 14vh;
+
+}
+@keyframes fadeInSlide {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.MonopolyBoard div {
+  animation: fadeInSlide 3s ease-in-out;
+}
