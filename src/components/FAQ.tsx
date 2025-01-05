@@ -10,7 +10,7 @@ export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="container py-14 sm:py-22 justify-center items-center flex flex-col gap-8"
+      className="container py-14 sm:py-22 justify-center items-center flex flex-col gap-8" 
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">FAQ</p>
