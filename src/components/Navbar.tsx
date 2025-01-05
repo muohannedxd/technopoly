@@ -6,44 +6,18 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { GitHubLogoIcon } from "@radix-ui/react-icons";
 import { buttonVariants } from "./ui/button";
 import { Menu } from "lucide-react";
 import { HashLink } from "react-router-hash-link";
 import LogoIcon from "@/assets/logo/Inline_Dark_Transparent_PNG.png";
-
-interface RouteProps {
-  href: string;
-  label: string;
-}
-
-const routeList: RouteProps[] = [
-  {
-    href: "#about",
-    label: "About Us",
-  },
-  {
-    href: "#agenda",
-    label: "Agenda",
-  },
-  {
-    href: "#sponsors",
-    label: "Sponsors",
-  },
-  {
-    href: "#faq",
-    label: "FAQ",
-  },
-  {
-    href: "#contact",
-    label: "Contact",
-  },
-];
+import LogoStacked from "@/assets/logo/Stacked_Dark_Transparent_PNG.png";
+import { routeList, RouteProps } from "@/lib/data/navbar.data";
+import CustomButton from "./CustomButton";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   return (
-    <header className="sticky top-0 z-40 w-full bg-grid-pattern bg-white text-foreground  shadow-md">
+    <header className="sticky py-1 top-0 z-40 w-full bg-grid-pattern bg-[length:50px_50px] bg-white text-foreground shadow-md">
       <div className="mx-auto">
         <div className="h-14 px-4 flex justify-between items-center">
           <div className="font-bold flex">
@@ -71,31 +45,34 @@ export const Navbar = () => {
               <SheetContent side={"left"}>
                 <SheetHeader>
                   <SheetTitle className="font-bold text-xl">
-                    Shadcn/React
+                    <HashLink
+                      rel="noreferrer noopener"
+                      to="/"
+                      className="ml-2 font-bold text-xl flex"
+                    >
+                      <img className="h-12" src={LogoStacked} />
+                    </HashLink>
                   </SheetTitle>
                 </SheetHeader>
-                <nav className="flex flex-col justify-center items-center gap-2 mt-4">
+                <nav className="flex flex-col justify-center items-center gap-4 mt-4">
                   {routeList.map(({ href, label }: RouteProps) => (
                     <HashLink
                       rel="noreferrer noopener"
                       key={label}
                       to={href}
                       onClick={() => setIsOpen(false)}
-                      className={buttonVariants({ variant: "ghost" })}
+                      className={`text-[17px] ${buttonVariants({
+                        variant: "link",
+                      })}`}
                     >
                       {label}
                     </HashLink>
                   ))}
                   <HashLink
                     rel="noreferrer noopener"
-                    to="https://github.com/leoMirandaa/shadcn-landing-page.git"
-                    target="_blank"
-                    className={`w-[110px] border ${buttonVariants({
-                      variant: "secondary",
-                    })}`}
+                    to="/register"
                   >
-                    <GitHubLogoIcon className="mr-2 w-5 h-5" />
-                    Github
+                    <CustomButton title="Register" size='lg' />
                   </HashLink>
                 </nav>
               </SheetContent>
@@ -119,12 +96,8 @@ export const Navbar = () => {
           </nav>
 
           <div className="hidden md:flex gap-2">
-            <HashLink
-              rel="noreferrer noopener"
-              to="/register"
-              className={`border ${buttonVariants({ variant: "secondary" })}`}
-            >
-              Register
+            <HashLink rel="noreferrer noopener" to="/register">
+              <CustomButton title="Register" />
             </HashLink>
           </div>
         </div>
