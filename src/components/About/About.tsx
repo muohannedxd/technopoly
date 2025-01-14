@@ -13,6 +13,7 @@ export default function About() {
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
     useRef<HTMLDivElement>(null),
+    useRef<HTMLDivElement>(null),
   ];
 
   const cardClasses = [
@@ -22,6 +23,9 @@ export default function About() {
     `,
     `
     card2_translation
+    `,
+    `
+    card3_translation
     `,
   ];
 
@@ -68,11 +72,21 @@ export default function About() {
           ref={cardRefs[2]}
           onClick={() => handleSwap(2)}
           className={`transition-all duration-300 ease-linear 
-              absolute rotate-[10deg] z-10 cursor-pointer hover:scale-105
+              absolute z-20 cursor-pointer hover:scale-105
               ${cardClasses[2]}
               `}
         >
           <AboutCard aboutus={AboutUsList[2]} />
+        </div>
+        <div
+          ref={cardRefs[3]}
+          onClick={() => handleSwap(3)}
+          className={`transition-all duration-300 ease-linear 
+              absolute rotate-[10deg] z-10 cursor-pointer hover:scale-105
+              ${cardClasses[3]}
+              `}
+        >
+          <AboutCard aboutus={AboutUsList[3]} />
         </div>
 
         {/** Description */}

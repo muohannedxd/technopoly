@@ -1,6 +1,7 @@
 import GDG from "@/assets/images/gdg.png"
 import Excellence from "@/assets/images/excellence.png"
 import Technopoly from "@/assets/logo/Minimal_Dark_Transparent_PNG.png"
+import HRM from "@/assets/images/hrm.png"
 
 export interface AboutProps {
   id: number;
@@ -35,5 +36,13 @@ export const AboutUsList: AboutProps[] = [
     background: 'bg-lightblue',
     borderColor: 'border-lightblue',
     description: "EXCELLENCE Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis leo eget tortor lacinia, vitae egestas risus pretium. Integer id tincidunt risus, et consectetur tellus. Duis turpis metus, vulputate et leo vitae, pretium eleifend lacus. Nunc ornare, metus nec vestibulum lobortis, purus ante feugiat leo, sit amet iaculis massa ipsum et lorem. ",
+  },
+  {
+    id: 3,
+    title: "HRM Club",
+    image: HRM,
+    background: 'bg-red-400',
+    borderColor: 'border-red-400',
+    description: "HRM Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis leo eget tortor lacinia, vitae egestas risus pretium. Integer id tincidunt risus, et consectetur tellus. Duis turpis metus, vulputate et leo vitae, pretium eleifend lacus. Nunc ornare, metus nec vestibulum lobortis, purus ante feugiat leo, sit amet iaculis massa ipsum et lorem. ",
   }
 ];
