@@ -145,7 +145,7 @@
 .MonopolyBoard{
   
   display: flex;
-  background: url('src/assets/logo/technopoly.png');
+  background: url('/src/assets/logo/technopoly.png');
   background-repeat: no-repeat;
   background-position: center;
   flex-direction: column;

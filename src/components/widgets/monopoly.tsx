@@ -12,32 +12,32 @@ function Monopoly() {
       <div className="flex-row">
         <MonopolySquare
           backgroundColor="#FF8C1E"
-          backimage="src/assets/logo/adobe.png"
+          backimage="/src/assets/logo/adobe.png"
         ></MonopolySquare>
         <div className="flex-row">
           <MonopolyRectangle
             backgroundColor="#2396FF"
-            backimage="src/assets/logo/drivebleu.png"
+            backimage="/src/assets/logo/drivebleu.png"
           ></MonopolyRectangle>
           <MonopolyRectangle backgroundColor="#2396FF"></MonopolyRectangle>
           <MonopolyRectangle
             backgroundColor="#2396FF"
-            backimage="src/assets/logo/vscode.png"
+            backimage="/src/assets/logo/vscode.png"
           ></MonopolyRectangle>
           <MonopolyRec
             backgroundColor="#6E6E6E"
-            backimage="src/assets/logo/question_mark.png"
+            backimage="/src/assets/logo/question_mark.png"
           ></MonopolyRec>
           <MonopolyRectangle backgroundColor="#94C5AF"></MonopolyRectangle>
           <MonopolyRectangle
             backgroundColor="#94C5AF"
-            backimage="src/assets/logo/googleclass.png"
+            backimage="/src/assets/logo/googleclass.png"
           ></MonopolyRectangle>
           <MonopolyRectangle backgroundColor="#94C5AF"></MonopolyRectangle>
         </div>
         <MonopolySquare
           backgroundColor="#468C44"
-          backimage="src/assets/logo/exel.png"
+          backimage="/src/assets/logo/exel.png"
         ></MonopolySquare>
       </div>
 
@@ -47,7 +47,7 @@ function Monopoly() {
           <MonopolyRotated backgroundColor="#3250AA"></MonopolyRotated>
           <MonopolyRota
             backgroundColor="#6029FE"
-            backimage="src/assets/logo/gdg.png"
+            backimage="/src/assets/logo/gdg.png"
           ></MonopolyRota>
           <MonopolyRotated backgroundColor="#3250AA"></MonopolyRotated>
         </div>
@@ -55,7 +55,7 @@ function Monopoly() {
           <MonopolyRotatedtwo backgroundColor="#FFE62E"></MonopolyRotatedtwo>
           <MonopolyRota
             backgroundColor="#6029FE"
-            backimage="src/assets/logo/figma.png"
+            backimage="/src/assets/logo/figma.png"
           ></MonopolyRota>
           <MonopolyRotatedtwo backgroundColor="#FFE62E"></MonopolyRotatedtwo>
           <MonopolyRotatedtwo backgroundColor="#FFE62E"></MonopolyRotatedtwo>
@@ -65,35 +65,35 @@ function Monopoly() {
       <div className="flex-row">
         <MonopolySquare
           backgroundColor="#FF303D"
-          backimage="src/assets/logo/start.png"
+          backimage="/src/assets/logo/start.png"
         ></MonopolySquare>
         <div className="flex-row">
           <MonopolyRectangleUp backgroundColor="#FF8C1E"></MonopolyRectangleUp>
           <MonopolyRectangleUp
             backgroundColor="#FF8C1E"
-            backimage="src/assets/logo/html.png"
+            backimage="/src/assets/logo/html.png"
           ></MonopolyRectangleUp>
           <MonopolyRec
             backgroundColor="#FF8C1E"
-            backimage="src/assets/logo/REGISTER.png"
+            backimage="/src/assets/logo/REGISTER.png"
           ></MonopolyRec>
           <MonopolyRectangleUp
             backgroundColor="#FF8C1E"
-            backimage="src/assets/logo/ubentu.png"
+            backimage="/src/assets/logo/ubentu.png"
           ></MonopolyRectangleUp>
           <MonopolyRectangleUp backgroundColor="#EFE8D8"></MonopolyRectangleUp>
           <MonopolyRectangleUp
             backgroundColor="#FF303D"
-            backimage="src/assets/logo/power_point.png"
+            backimage="/src/assets/logo/power_point.png"
           ></MonopolyRectangleUp>
           <MonopolyRectangleUp
             backgroundColor="#FF303D"
-            backimage="src/assets/logo/github.png"
+            backimage="/src/assets/logo/github.png"
           ></MonopolyRectangleUp>
         </div>
         <MonopolySquare
           backgroundColor="#93C0AC"
-          backimage="src/assets/logo/logogdg.png"
+          backimage="/src/assets/logo/logogdg.png"
         ></MonopolySquare>
       </div>
     </div>
