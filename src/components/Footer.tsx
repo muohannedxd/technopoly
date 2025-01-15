@@ -17,7 +17,7 @@ export const Footer = () => {
         </div>
 
         {/** GDG Coin */}
-        <div className="absolute left-6 md:left-12 top-10 hover:scale-105 transition-all duration-300">
+        <div className="absolute left-6 md:left-12 top-10 hover:rotate-12 transition-all duration-300">
           <img src={GDGCoin} alt="GDGCoin" className="w-32 sm:w-44 lg:w-56" />
         </div>
 
