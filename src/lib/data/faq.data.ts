@@ -6,26 +6,26 @@ export interface FAQProps {
 
 export const FAQList: FAQProps[] = [
   {
-    question: "What is Technopoly?",
-    answer: "Technopoly is a mix of both ideathon and case competition",
+    question: "Who can participate?",
+    answer: "Technopoly is open to students and young professionals with backgrounds in technical fields or business studies.",
     value: "item-1",
   },
   {
-    question: "Lorem ipsum dolor sit amet consectetur adipisicing elit?",
+    question: "How are the teams formed, and do I need to have a team before registering?",
     answer:
-      "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint labore quidem quam? Consectetur sapiente iste rerum reiciendis animi nihil nostrum sit quo, modi quod.",
+      "You will tackle challenges that require technical prototyping and business-focused strategies. Thus, teams are a mix of both. And, not necessarily having a team pre-registration.",
     value: "item-2",
   },
   {
     question:
-      "Lorem ipsum dolor sit amet  Consectetur natus dolores minus quibusdam?",
+      "What resources will be available to participants during the event?",
     answer:
-      "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Labore qui nostrum reiciendis veritatis necessitatibus maxime quis ipsa vitae cumque quo?",
+      "Participants will have access to mentoring sessions and workshops in technical and entrepreneurial fields. Furthermore, a supportive environment and plenty of networking opportunities.",
     value: "item-3",
   },
   {
-    question: "Lorem ipsum dolor sit amet, consectetur adipisicing elit?",
-    answer: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
+    question: "Do I need to have prior experience?",
+    answer: "Only a slight experience with prototyping or business planning is required. Plus, Mentors and workshops will guide you throughout the event.",
     value: "item-4",
   }
 ];

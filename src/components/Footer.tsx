@@ -1,166 +1,52 @@
+import { Link } from "react-router-dom";
+import Gmail from "@/assets/icons/gmail.png";
+import Instagram from "@/assets/icons/instagram.png";
+import Discord from "@/assets/icons/discord.png";
+import LinkedIn from "@/assets/icons/linkedin.png";
+import GDGCoin from "@/assets/images/gdgCoin.png";
+
 export const Footer = () => {
   return (
     <footer id="footer">
-
       <section
         id="contact"
-        className="container py-20 grid grid-cols-2 md:grid-cols-4 xl:grid-cols-6 gap-x-12 gap-y-8">
-        <div className="col-span-full xl:col-span-2">
-          <a
-            rel="noreferrer noopener"
-            href="/"
-            className="font-bold text-xl flex"
+        className="container relative py-32 justify-center items-center flex flex-col"
+      >
+        <div className="text-center flex flex-col gap-4">
+          <p className="text-title">Contact Us</p>
+        </div>
+
+        {/** GDG Coin */}
+        <div className="absolute left-6 md:left-12 top-10">
+          <img src={GDGCoin} alt="GDGCoin" className="w-32 sm:w-44 lg:w-56" />
+        </div>
+
+        <div className="flex pt-20 pb-12 gap-12 md:gap-20 items-center">
+          <Link to="mailto:gdg@ensia.edu.dz" className="w-10 md:w-16">
+            <img src={Gmail} alt="Gmail" />
+          </Link>
+          <Link to="https://discord.gg/Tk8xG3T8" className="w-10 md:w-16">
+            <img src={Discord} alt="Discord" />
+          </Link>
+          <Link
+            to="https://www.instagram.com/gdg_ensia/"
+            className="w-10 md:w-16"
           >
-            LOGO
-          </a>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Follow US</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Github
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitter
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Dribbble
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Platforms</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Web
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Mobile
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Desktop
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">About</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Features
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Pricing
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              FAQ
-            </a>
-          </div>
-        </div>
-
-        <div className="flex flex-col gap-2">
-          <h3 className="font-bold text-lg">Community</h3>
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Youtube
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Discord
-            </a>
-          </div>
-
-          <div>
-            <a
-              rel="noreferrer noopener"
-              href="#"
-              className="opacity-60 hover:opacity-100"
-            >
-              Twitch
-            </a>
-          </div>
+            <img src={Instagram} alt="Instagram" />
+          </Link>
+          <Link
+            to="https://www.linkedin.com/company/gdg-ensia/"
+            className="w-10 md:w-16"
+          >
+            <img src={LinkedIn} alt="LinkedIn" />
+          </Link>
         </div>
       </section>
-
-      <section className="container pb-14 text-center">
-        <h3>
-          &copy; 2024 Landing page made by{" "}
-          <a
-            rel="noreferrer noopener"
-            target="_blank"
-            href="https://www.linkedin.com/in/leopoldo-miranda/"
-            className="text-primary transition-all border-primary hover:border-b-2"
-          >
-            Leo Miranda
-          </a>
-        </h3>
-      </section>
+      <div className="bg-lightblue w-full">
+        <p className="text-white text-center py-3">
+          Copyright © Copyright 2025 GDG on Campus: ENSIA. All Rights Reserved.
+        </p>
+      </div>
     </footer>
   );
 };
