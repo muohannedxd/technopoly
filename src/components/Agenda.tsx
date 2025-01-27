@@ -60,7 +60,7 @@ export const Agenda = () => {
 
       <section
         id="agenda"
-        className="container py-24 sm:py-32 flex justify-center items-center flex-col"
+        className="container py-16 sm:py-32 flex justify-center items-center flex-col"
       >
         <div className="relative w-full max-w-4xl h-[550px] bg-[#fff4c4] rounded-3xl shadow-lg border-r-[10px] border-b-[20px] border-4 border-black flex flex-col items-center justify-start">
           <h2 className="text-title font-medium mt-4">DAY {currentDot}</h2>
