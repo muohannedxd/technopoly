@@ -1,7 +1,7 @@
-import React, { useState } from "react";
-import QuestionCard from "@/components/QuestionCard";
-import Smallcard from "@/components/Smallcard";
-import useRegisterViewModel from "@/components/viewmodels/registrationsViewmodel";
+
+import useRegisterViewModel from "../components/viewmodels/registrationsViewmodel";
+import Smallcard from "../components/Smallcard";
+import QuestionCard from "../components/QusetionCard";
 import { registrationQuestions } from "@/lib/data/registrationsinfo.data";
 
 export default function Register() {

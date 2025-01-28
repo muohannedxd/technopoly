@@ -1,24 +1,24 @@
 /* less than 400px */
 .card1_translation {
-  @apply translate-x-[2vw] translate-y-[38em];
+  @apply translate-x-[2vw] translate-y-[41em];
 }
 .card2_translation {
-  @apply translate-x-[22vw] translate-y-[36em];
+  @apply translate-x-[22vw] translate-y-[39em];
 }
 .card3_translation {
-  @apply translate-x-[42vw] translate-y-[38em];
+  @apply translate-x-[42vw] translate-y-[41em];
 }
 
 /*  from 400px to 430px */
 @media (min-width: 400px) {
   .card1_translation {
-    @apply translate-x-[8vw] translate-y-[60vh];
+    @apply translate-x-[8vw] translate-y-[66vh];
   }
   .card2_translation {
-    @apply translate-x-[26vw] translate-y-[58vh];
+    @apply translate-x-[26vw] translate-y-[64vh];
   }
   .card3_translation {
-    @apply translate-x-[44vw] translate-y-[60vh];
+    @apply translate-x-[44vw] translate-y-[66vh];
   }
 }
 
