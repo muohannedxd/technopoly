@@ -25,10 +25,10 @@ export const Hero = () => {
         alt="GDG Technopoly"
         className="h-[100vh] w-full"
       />
-      <div className="absolute top-1/3 md:top-1/3 left-1/2 md:left-2/3 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[30%] md:top-[36%] left-1/2 md:left-2/3 transform -translate-x-1/2 -translate-y-1/2">
         <TimeDate />
       </div>
-      <div className="absolute top-2/3 md:top-2/3 left-1/2 md:left-1/3 transform -translate-x-1/2 -translate-y-1/2">
+      <div className="absolute top-[70%] md:top-[62%] left-1/2 md:left-1/3 transform -translate-x-1/2 -translate-y-1/2">
         <Location />
       </div>
       <HashLink
