@@ -1,14 +1,9 @@
-// viewmodels/RegisterViewModel.ts
 import { useState } from "react";
 import { RegistrationInfo, registrationQuestions } from "../../lib/data/registrationsinfo.data";
 
 export default function useRegisterViewModel() {
-  const [formData, setFormData] = useState<RegistrationInfo>({
-    Name: "",
-    Email: "",
-    School: "",
-  });
-  const [errors, setErrors] = useState<{ [key in keyof RegistrationInfo]?: string }>({});
+  const [formData, setFormData] = useState<RegistrationInfo>({} as RegistrationInfo);
+  const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [smallCards, setSmallCards] = useState<number[]>(
     Array.from({ length: registrationQuestions.length }, (_, index) => index)
@@ -20,40 +15,67 @@ export default function useRegisterViewModel() {
     "linear-gradient(to right, #009EFF, #8A2BE2)",
   ];
 
-  const validateField = (name: keyof RegistrationInfo, value: string): string | null => {
-    const trimmedValue = value.trim();
-
-    if (!trimmedValue) return `${name} is required.`;
-
-    if (name === "Email" && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmedValue)) {
+  const validateField = (name: keyof RegistrationInfo, value: string | string[]): string | null => {
+    // Check if the field is empty or contains just whitespace
+    if (!value || (typeof value === "string" && !value.trim())) {
+      // If the field is "LinkedIn Profile" or "GitHub/Portfolio Link", it's optional, so don't return an error
+      if (name === "LinkedInProfile" || name === "GitHubPortfolio") {
+        return null;  
+      }
+      return `${name} is required.`; // All other fields are required
+    }
+  
+    // Email validation
+    if (name === "Email" && typeof value === "string" && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
       return "Invalid email format.";
     }
-
+  
+    // Phone number validation
+    if (name === "PhoneNumber" && typeof value === "string" && !/^\d+$/.test(value)) {
+      return "Phone number should only contain digits.";
+    }
+  
+    // Optional fields validation (LinkedIn and GitHub/Portfolio links) if provided
+    if ((name === "LinkedInProfile" || name === "GitHubPortfolio") && typeof value === "string") {
+      const urlPattern = /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/[\w\d-_.~:/?#[\]@!$&'()*+,;=]*)?$/;
+      if (value && !urlPattern.test(value)) {
+        return "Invalid URL format.";
+      }
+    }
+  
     return null;
   };
+  
+  
+  
+  
 
-  const handleInputChange = (name: keyof RegistrationInfo, value: string) => {
+  const handleInputChange = (name: keyof RegistrationInfo, value: string | string[]) => {
     const error = validateField(name, value);
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: error }));
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: error || "" }));
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleNext = () => {
-    const currentField = registrationQuestions[currentIndex].name;
-    const error = validateField(currentField, formData[currentField]);
+    const currentQuestions = registrationQuestions[currentIndex].questions;
+    const currentErrors = {};
 
-    if (error) {
-      setErrors((prevErrors) => ({ ...prevErrors, [currentField]: error }));
-    } else {
-      setErrors((prevErrors) => ({ ...prevErrors, [currentField]: null }));
-      if (currentIndex < registrationQuestions.length - 1 && !isAnimating) {
-        setIsAnimating(true);
-        setTimeout(() => {
-          setCurrentIndex((prevIndex) => prevIndex + 1);
-          setSmallCards((prevCards) => prevCards.slice(1));
-          setIsAnimating(false);
-        }, 300);
+    currentQuestions.forEach((q) => {
+      const error = validateField(q.name, formData[q.name] || "");
+      if (error) {
+        currentErrors[q.name] = error;
       }
+    });
+
+    setErrors(currentErrors);
+
+    if (Object.keys(currentErrors).length === 0 && !isAnimating) {
+      setIsAnimating(true);
+      setTimeout(() => {
+        setCurrentIndex((prevIndex) => prevIndex + 1);
+        setSmallCards((prevCards) => prevCards.slice(1));
+        setIsAnimating(false);
+      }, 300);
     }
   };
 
@@ -62,50 +84,27 @@ export default function useRegisterViewModel() {
       setIsAnimating(true);
       setTimeout(() => {
         setCurrentIndex((prevIndex) => prevIndex - 1);
-        setSmallCards((prevCards) => {
-          const newSmallCards = [...prevCards];
-          newSmallCards.unshift(prevCards[0] - 1);
-          return newSmallCards;
-        });
         setIsAnimating(false);
       }, 300);
     }
   };
 
-  const handleSubmit = async () => {
-    const newErrors: { [key in keyof RegistrationInfo]?: string } = {};
+  const handleSubmit = () => {
+    const finalErrors: { [key: string]: string } = {};
 
-    Object.keys(formData).forEach((key) => {
-      const fieldName = key as keyof RegistrationInfo;
-      const error = validateField(fieldName, formData[fieldName]);
-      if (error) {
-        newErrors[fieldName] = error;
-      }
+    registrationQuestions.forEach((section) => {
+      section.questions.forEach((q) => {
+        const error = validateField(q.name, formData[q.name] || "");
+        if (error) {
+          finalErrors[q.name] = error;
+        }
+      });
     });
 
-    setErrors(newErrors);
+    setErrors(finalErrors);
 
-    if (Object.keys(newErrors).length > 0) {
-      return;
-    }
-
-    try {
-      console.log(formData);
-      /*
-      const response = await fetch("API_URL", {
-        method: "POST",
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        const result = await response.json();
-        console.log("Form successfully submitted:", result);
-      } else {
-        console.error("Failed to submit form:", response.statusText);
-      }
-      */
-    } catch (error) {
-      console.error("Error submitting form:", error);
+    if (Object.keys(finalErrors).length === 0) {
+      console.log("Submitting form: ", formData);
     }
   };
 
