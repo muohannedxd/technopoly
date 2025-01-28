@@ -1,5 +1,4 @@
 // views/Register.tsx
-import { useState } from "react";
 import useRegisterViewModel from "../components/viewmodels/registrationsViewmodel";
 import Smallcard from "../components/Smallcard";
 import QuestionCard from "../components/QusetionCard";
