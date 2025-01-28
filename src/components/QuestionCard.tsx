@@ -102,7 +102,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
                 className={`w-full bg-transparent ${styles.fieldBorder} border-2 p-2 rounded-xl resize-none focus:outline-none ${styles.textColor} `}
-                rows={4}
+                rows={8}
                 maxLength={1600}
                 
               />

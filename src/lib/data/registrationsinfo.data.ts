@@ -7,7 +7,7 @@ export interface RegistrationInfo {
   YearOfStudy?: string;
   TeamName?: string;
   Skills?: string[];
-  TeamMotivation?: string;
+  Motivation?: string;
   LinkedInProfile?: string;
   GitHubPortfolio?: string;
   DiscordID: string;
@@ -15,7 +15,13 @@ export interface RegistrationInfo {
 
 export const registrationQuestions: {
   section: string;
-  questions: { label: string; name: keyof RegistrationInfo; type: string; value: string | string[]; options?: string[] }[];
+  questions: {
+    label: string;
+    name: keyof RegistrationInfo;
+    type: string;
+    value: string | string[];
+    options?: string[];
+  }[];
 }[] = [
   {
     section: "Personal Information",
@@ -29,25 +35,35 @@ export const registrationQuestions: {
     section: "School and Major",
     questions: [
       {
-        label: "School/Faculty (Dropdown, full name options) *",
+        label: "School (Faculty) *",
         name: "School",
         type: "dropdown",
         value: "",
-        options: ["ENSIA", "HEC", "ESHRA"],
+        options: [
+          "The National School of Artificial Intelligence (ENSIA)",
+          "The School of Higher Commercial Studies (HEC)",
+          "School of Hotel & Restaurant Management (ESHRA)",
+        ],
       },
       {
-        label: "Major/Field of Study *",
+        label: "Major (Field) of Study *",
         name: "Major",
         type: "dropdown",
         value: "",
-        options: ["Computer Science", "Business", "Hospitality and Catering"],
+        options: ["Artificial Intelligence / Computer Science", "Business / Commerce", "Hospitality and Catering"],
       },
       {
         label: "Year of Study *",
         name: "YearOfStudy",
         type: "dropdown",
         value: "",
-        options: ["1CP (first year)", "2CP (second year)", "1CS (third year)", "2CS (fourth year; master)", "Final Year"],
+        options: [
+          "1CP (first year)",
+          "2CP (second year)",
+          "1CS (third year)",
+          "2CS (fourth year/master)",
+          "Final Year",
+        ],
       },
     ],
   },
@@ -55,20 +71,14 @@ export const registrationQuestions: {
     section: "Team Details",
     questions: [
       {
-        label: "Team Name",
-        name: "TeamName",
-        type: "text",
-        value: "",
-      },
-      {
-        label: "Your Skills (Press ‘ENTER’ to register a new tag)",
+        label: "Your Skills (Press ‘ENTER’ to register a new skill)",
         name: "Skills",
         type: "tags",
         value: [],
       },
       {
         label: "Team Motivation ",
-        name: "TeamMotivation",
+        name: "Motivation",
         type: "textarea",
         value: "",
       },
@@ -80,8 +90,8 @@ export const registrationQuestions: {
       {
         label: "Discord ID *",
         name: "DiscordID",
-        type: "text",      
-        value: "",         
+        type: "text",
+        value: "",
       },
       {
         label: "LinkedIn Profile (optional)",
@@ -90,12 +100,11 @@ export const registrationQuestions: {
         value: "",
       },
       {
-        label: "GitHub/Portfolio Link (optional, for technical participants)",
+        label: "GitHub / Portfolio Link (optional)",
         name: "GitHubPortfolio",
         type: "url",
         value: "",
       },
-      
     ],
   },
 ];

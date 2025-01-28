@@ -1,8 +1,13 @@
 import { useState } from "react";
-import { RegistrationInfo, registrationQuestions } from "../../lib/data/registrationsinfo.data";
+import {
+  RegistrationInfo,
+  registrationQuestions,
+} from "../../lib/data/registrationsinfo.data";
 
 export default function useRegisterViewModel() {
-  const [formData, setFormData] = useState<RegistrationInfo>({} as RegistrationInfo);
+  const [formData, setFormData] = useState<RegistrationInfo>(
+    {} as RegistrationInfo
+  );
   const [errors, setErrors] = useState<{ [key: string]: string }>({});
   const [currentIndex, setCurrentIndex] = useState(0);
   const [smallCards, setSmallCards] = useState<number[]>(
@@ -15,50 +20,70 @@ export default function useRegisterViewModel() {
     "linear-gradient(to right, #009EFF, #8A2BE2)",
   ];
 
-  const validateField = (name: keyof RegistrationInfo, value: string | string[]): string | null => {
+  const validateField = (
+    name: keyof RegistrationInfo,
+    value: string | string[]
+  ): string | null => {
     // Check if the field is empty or contains just whitespace
     if (!value || (typeof value === "string" && !value.trim())) {
       // If the field is "LinkedIn Profile" or "GitHub/Portfolio Link", it's optional, so don't return an error
       if (name === "LinkedInProfile" || name === "GitHubPortfolio") {
-        return null;  
+        return null;
       }
       return `${name} is required.`; // All other fields are required
     }
-  
+
+    // Name validation
+    if (
+      name === "Name" &&
+      typeof value === "string" &&
+      !/^[a-zA-ZÀ-ÖØ-öø-ÿ'-]+(?:\s[a-zA-ZÀ-ÖØ-öø-ÿ'-]+)+$/.test(value)
+    ) {
+      return "Please enter a valid full name (at least two words, letters only, may include hyphens or apostrophes).";
+    }
+
     // Email validation
-    if (name === "Email" && typeof value === "string" && !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)) {
+    if (
+      name === "Email" &&
+      typeof value === "string" &&
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+    ) {
       return "Invalid email format.";
     }
-  
+
     // Phone number validation
-    if (name === "PhoneNumber" && typeof value === "string" && !/^\d+$/.test(value)) {
+    if (
+      name === "PhoneNumber" &&
+      typeof value === "string" &&
+      !/^\d+$/.test(value)
+    ) {
       return "Phone number should only contain digits.";
     }
-  
+
     // Optional fields validation (LinkedIn and GitHub/Portfolio links) if provided
-    if ((name === "LinkedInProfile" || name === "GitHubPortfolio") && typeof value === "string") {
-      const urlPattern = /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/[\w\d-_.~:/?#[\]@!$&'()*+,;=]*)?$/;
+    if (
+      (name === "LinkedInProfile" || name === "GitHubPortfolio") &&
+      typeof value === "string"
+    ) {
+      const urlPattern =
+        /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/[\w\d-_.~:/?#[\]@!$&'()*+,;=]*)?$/;
       if (value && !urlPattern.test(value)) {
         return "Invalid URL format.";
       }
     }
-  
+
     return null;
   };
-  
-  
-  
-  
 
-  const handleInputChange = (name: keyof RegistrationInfo, value: string | string[]) => {
-    const error = validateField(name, value);
+  const handleInputChange = (name: string, value: string | string[]) => {
+    const error = validateField(name as keyof RegistrationInfo, value);
     setErrors((prevErrors) => ({ ...prevErrors, [name]: error || "" }));
     setFormData((prevData) => ({ ...prevData, [name]: value }));
   };
 
   const handleNext = () => {
     const currentQuestions = registrationQuestions[currentIndex].questions;
-    const currentErrors = {};
+    const currentErrors: Record<string, string> = {};
 
     currentQuestions.forEach((q) => {
       const error = validateField(q.name, formData[q.name] || "");
