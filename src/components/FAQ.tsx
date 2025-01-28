@@ -10,11 +10,11 @@ export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="container py-14 sm:py-20 justify-center items-center flex flex-col gap-8" 
+      className="container pt-24 pb-14 sm:pb-20 sm:pt-30 justify-center items-center flex flex-col gap-8" 
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">FAQ</p>
-        <p className="text-main text-lightblue">Frequently Asked Questions</p>
+        <p className="text-main text-lightblue"> ¿Frequently Asked Questions? </p>
       </div>
 
       <Accordion type="single" collapsible className="w-full AccordionRoot flex flex-col gap-4">

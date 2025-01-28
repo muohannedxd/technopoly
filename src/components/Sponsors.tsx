@@ -11,7 +11,7 @@ export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="container pt-20 sm:pt-4 pb-24 justify-center items-center flex flex-col gap-20"
+      className="container pt-20 sm:pt-32 pb-14 justify-center items-center flex flex-col gap-20"
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">Sponsors</p>

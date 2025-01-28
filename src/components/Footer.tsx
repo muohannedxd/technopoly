@@ -49,8 +49,8 @@ export const Footer = () => {
         </div>
       </section>
       <div className="bg-lightblue w-full">
-        <p className="text-white text-center py-3">
-          Copyright © Copyright 2025 GDG on Campus: ENSIA. All Rights Reserved.
+        <p className="text-white text-center py-3 text-xs sm:text-sm md:text-base">
+        All Rights Reserved © GDG on Campus: ENSIA
         </p>
       </div>
     </footer>

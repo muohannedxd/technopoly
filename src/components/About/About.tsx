@@ -43,11 +43,11 @@ export default function About() {
   return (
     <section
       id="about"
-      className="container pt-16 sm:pt-32 pb-[38vh] sm:pb-[50vh] justify-center items-center flex flex-col gap-8"
+      className="container pt-16 sm:pt-32 pb-[36vh] sm:pb-[36vh] justify-center items-center flex flex-col gap-8"
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title"> About Us </p>
-        <p className="text-main text-lightblue"> Click on any card to learn more about it </p>
+        <p className="text-main text-lightblue"> ★ Click on any card to learn more about us ★ </p>
       </div>
 
       <div className="relative w-full flex flex-col md:flex-row gap-8">

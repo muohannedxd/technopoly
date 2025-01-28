@@ -26,11 +26,11 @@ export const Agenda = () => {
   return (
     <div
       id="agenda"
-      className="w-full flex justify-center content-center flex-col items-center"
+      className="w-full flex justify-center content-center pt-[2vh] sm:pt-[14vh] flex-col items-center"
     >
       <div className="text-center flex flex-col gap-4 mb-14">
         <p className="text-title"> Event Schedule </p>
-        <p className="text-main text-lightblue"> Roll the dice to see what is waiting for you next day ;) </p>
+        <p className="text-main text-lightblue"> {'(>ᴗ•) Roll the dice to see what is waiting for you next day (•ᴗ<)'} </p>
       </div>
 
       <div className="relative w-full max-w-6xl h-12 rounded-full shadow-md flex items-center justify-between pl-8 pr-8 border-4 border-black -mb-14 bg-[#fff4c4]">
@@ -64,7 +64,7 @@ export const Agenda = () => {
         ></span>
       </div>
 
-      <section className="container py-16 sm:py-32 flex justify-center items-center flex-col">
+      <section className="container pt-16 sm:pt-32 flex justify-center items-center flex-col">
         <div className="relative w-full max-w-4xl h-[550px] bg-[#fff4c4] rounded-3xl shadow-lg border-r-[10px] border-b-[20px] border-4 border-black flex flex-col items-center justify-start">
           <h2 className="text-title font-medium mt-4">DAY {currentDot}</h2>
           <p className="text-lg text-center mt-4">{dayContent[currentDot]}</p>
