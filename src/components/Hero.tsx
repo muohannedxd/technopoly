@@ -34,7 +34,7 @@ export const Hero = () => {
       <HashLink
         rel="noreferrer noopener"
         to="/register"
-        className="bg-blue-300 absolute bottom-4 md:bottom-10 left-1/2 -translate-x-[58%] md:-translate-x-[76%] h-32 md:h-44 w-[38%] md:w-[20%] opacity-0"
+        className="bg-blue-300 absolute bottom-4 md:bottom-8 left-1/2 -translate-x-[57%] md:-translate-x-[76%] h-[12%] md:h-[18%] w-[39%] md:w-[20%] opacity-0"
       >
         REGISTER
       </HashLink>
