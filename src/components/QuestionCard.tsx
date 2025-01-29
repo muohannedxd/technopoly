@@ -1,5 +1,4 @@
-import { Loader2 } from "lucide-react";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 interface QuestionCardProps {
   section: string;
@@ -18,7 +17,7 @@ interface QuestionCardProps {
   isNextDisabled: boolean;
   isBackDisabled: boolean;
   gradient: string;
-  isSubmitting: boolean;
+  isSchoolChanged: string;
 }
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -32,8 +31,17 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   isNextDisabled,
   isBackDisabled,
   gradient,
-  isSubmitting
+  isSchoolChanged,
 }) => {
+  const [selectedSchool, setSelectedSchool] = useState<string>("");
+
+  useEffect(() => {
+    const schoolQuestion = questions.find((q) => q.name === "School");
+    if (schoolQuestion) {
+      setSelectedSchool(schoolQuestion.value as string);
+    }
+  }, [questions]);
+
   const getStyles = () => {
     if (gradient === "linear-gradient(to right, #F79A02, #F8EEC8)") {
       return {
@@ -52,7 +60,6 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         dropdownText: "text-black",
       };
     }
-    // Default styles
     return {
       fieldBorder: "border-black",
       textColor: "text-black",
@@ -61,19 +68,27 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       dropdownText: "text-black",
     };
   };
-  
 
   const styles = getStyles();
 
+  const handleSchoolChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = e.target.value;
+    setSelectedSchool(value);
+    onChange("School", value);
+    if (value !== "Other") {
+      onChange("OtherSchool", "");
+    }
+  };
+
   return (
     <div
-      className="flex flex-col w-[90vw] sm:w-[70vw] md:w-[60vw] rounded-[30px] border-[6px] border-black shadow-xl"
+      className="flex flex-col h-[75vh] w-[60vw] rounded-[30px] border-[6px] border-black shadow-xl"
       style={{ background: gradient }}
     >
-      <h1 className={`text-lg md:text-2xl font-bold text-center mt-6 ${styles.textColor}`}>
+      <h1 className={`text-[2rem] font-bold text-center mt-6 ${styles.textColor}`}>
         {section}
       </h1>
-      <div className="flex flex-col px-4 md:px-10 mt-4 space-y-6 flex-grow">
+      <div className="flex flex-col px-10 mt-4 space-y-6 flex-grow">
         {questions.map((q, index) => (
           <div key={index}>
             <label className={`block text-lg font-semibold mb-2 ${styles.textColor}`}>
@@ -81,24 +96,22 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
             </label>
             {q.type === "dropdown" ? (
               <select
-              value={q.value as string}
-              onChange={(e) => onChange(q.name, e.target.value)}
-              className={`w-full bg-transparent ${styles.fieldBorder} border-b-2 p-2 rounded-none focus:outline-none ${styles.dropdownText}`}
-            >
-              <option value="">Select...</option>
-              {q.options?.map((option, idx) => (
-                <option key={idx} value={option}>
-                  {option}
-                </option>
-              ))}
-            </select>
-            
+                value={q.value as string}
+                onChange={q.name === "School" ? handleSchoolChange : (e) => onChange(q.name, e.target.value)}
+                className={`w-full bg-transparent ${styles.fieldBorder} border-b-2 p-2 rounded-none focus:outline-none ${styles.dropdownText}`}
+              >
+                <option value="">Select...</option>
+                {q.options?.map((option, idx) => (
+                  <option key={idx} value={option}>
+                    {option}
+                  </option>
+                ))}
+              </select>
             ) : q.type === "tags" ? (
               <TagInput
                 value={Array.isArray(q.value) ? q.value : []}
                 onChange={(tags) => onChange(q.name, tags)}
-                placeholder="Press Enter to add a tag"
-                
+                placeholder="Press Enter or click + to add a tag"
               />
             ) : q.type === "textarea" ? (
               <textarea
@@ -107,7 +120,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 className={`w-full bg-transparent ${styles.fieldBorder} border-2 p-2 rounded-xl resize-none focus:outline-none ${styles.textColor} `}
                 rows={4}
                 maxLength={1600}
-                
+                disabled={isSchoolChanged !== "Other" && q.name === "OtherSchool"}
               />
             ) : (
               <input
@@ -115,6 +128,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
                 className={`w-full bg-transparent ${styles.fieldBorder} border-b-2 p-2 rounded-none focus:outline-none ${styles.textColor}`}
+                disabled={isSchoolChanged !== "Other" && q.name === "OtherSchool"}
               />
             )}
             <div className="min-h-[1.5rem]">
@@ -125,11 +139,12 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           </div>
         ))}
       </div>
-      <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-0 justify-between px-12 py-16">
+
+      <div className="flex justify-between px-12 py-16">
         <button
           onClick={onBack}
           disabled={isBackDisabled}
-          className={`border-2 py-2 px-4 rounded-lg w-full md:w-32 ${
+          className={`border-2 py-2 px-4 rounded-lg w-[7vw] ${
             isBackDisabled ? "opacity-50" : styles.backBtn
           }`}
         >
@@ -138,18 +153,14 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         {isNextDisabled ? (
           <button
             onClick={onSubmit}
-            className={`flex gap-1 py-2 px-4 rounded-lg w-full md:w-auto justify-center items-center ${styles.nextBtn} ${isSubmitting && "opacity-50 cursor-not-allowed"}`}
-            disabled={isSubmitting}
+            className={`py-2 px-4 rounded-lg w-[7vw] ${styles.nextBtn}`}
           >
-            {
-              isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            }
             Submit
           </button>
         ) : (
           <button
             onClick={onNext}
-            className={`py-2 px-4 rounded-lg w-full md:w-32 ${styles.nextBtn}`}
+            className={`py-2 px-4 rounded-lg w-[7vw] ${styles.nextBtn}`}
           >
             Next
           </button>
@@ -166,13 +177,17 @@ const TagInput: React.FC<{
 }> = ({ value, onChange, placeholder }) => {
   const [inputValue, setInputValue] = useState("");
 
+  const handleAddTag = () => {
+    if (inputValue.trim() && !value.includes(inputValue.trim())) {
+      onChange([...value, inputValue.trim()]);
+      setInputValue("");
+    }
+  };
+
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && inputValue.trim()) {
       e.preventDefault();
-      if (!value.includes(inputValue.trim())) {
-        onChange([...value, inputValue.trim()]);
-        setInputValue("");
-      }
+      handleAddTag();
     }
   };
 
@@ -196,14 +211,35 @@ const TagInput: React.FC<{
           </button>
         </div>
       ))}
-      <input
-        type="text"
-        value={inputValue}
-        onChange={(e) => setInputValue(e.target.value)}
-        onKeyDown={handleKeyDown}
-        placeholder={placeholder}
-        className="flex-1 bg-transparent text-black focus:outline-none"
-      />
+      <div className="flex items-center flex-1">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          className="flex-1 bg-transparent text-black focus:outline-none"
+        />
+        <button
+          onClick={handleAddTag}
+          className="ml-2 text-green-600 hover:text-green-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
+        </button>
+      </div>
     </div>
   );
 };

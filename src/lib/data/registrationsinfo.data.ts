@@ -3,6 +3,7 @@ export interface RegistrationInfo {
   Email: string;
   PhoneNumber?: string;
   School?: string;
+  OtherSchool?: string;
   Major?: string;
   YearOfStudy?: string;
   Skills?: string[];
@@ -10,6 +11,7 @@ export interface RegistrationInfo {
   LinkedInProfile?: string;
   GitHubPortfolio?: string;
   DiscordID: string;
+  CardNumber?: string; 
 }
 
 export const registrationQuestions: {
@@ -20,6 +22,8 @@ export const registrationQuestions: {
     type: string;
     value: string | string[];
     options?: string[];
+    additionalField?: boolean;
+    disabled?: boolean;
   }[];
 }[] = [
   {
@@ -28,6 +32,7 @@ export const registrationQuestions: {
       { label: "Full Name *", name: "Name", type: "text", value: "" },
       { label: "Email Address *", name: "Email", type: "email", value: "" },
       { label: "Phone Number *", name: "PhoneNumber", type: "text", value: "" },
+      { label: "Student Card Number *", name: "CardNumber", type: "text", value: "" },
     ],
   },
   {
@@ -42,7 +47,15 @@ export const registrationQuestions: {
           "The National School of Artificial Intelligence (ENSIA)",
           "The School of Higher Commercial Studies (HEC)",
           "School of Hotel & Restaurant Management (ESHRA)",
+          "Other", 
         ],
+      },
+      {
+        label: "If other, please specify the School Name:",
+        name: "OtherSchool",
+        type: "text",
+        value: "",
+        
       },
       {
         label: "Major (Field) of Study *",
@@ -70,7 +83,7 @@ export const registrationQuestions: {
     section: "Team Details",
     questions: [
       {
-        label: "Your Skills (Press ‘ENTER’ to register a new skill)",
+        label: "Your Skills (Press ‘ENTER’ or the '+' sign to register a new skill)",
         name: "Skills",
         type: "tags",
         value: [],
