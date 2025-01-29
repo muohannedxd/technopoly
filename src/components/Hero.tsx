@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
-import HeroImage from "@/assets/images/hero.png";
-import HeroMobile from "@/assets/images/hero-mobile.png";
+import HeroImage from "@/assets/images/hero.svg";
+import HeroMobile from "@/assets/images/hero-mobile.svg";
 import TimeDate from "./Hero/TimeDate";
 import Location from "./Hero/Location";
 import { HashLink } from "react-router-hash-link";
@@ -23,7 +23,7 @@ export const Hero = () => {
       <img
         src={isMobile ? HeroMobile : HeroImage}
         alt="GDG Technopoly"
-        className="h-[100vh] w-full"
+        className={`${isMobile && 'h([100vh]'} w-full`}
       />
       <div className="absolute top-[30%] md:top-[36%] left-1/2 md:left-2/3 transform -translate-x-1/2 -translate-y-1/2">
         <TimeDate />
