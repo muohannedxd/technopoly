@@ -36,7 +36,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   isSubmitting,
   isSchoolChanged,
 }) => {
-  const [selectedSchool, setSelectedSchool] = useState<string>("");
+  const [_, setSelectedSchool] = useState<string>("");
 
   useEffect(() => {
     const schoolQuestion = questions.find((q) => q.name === "School");
