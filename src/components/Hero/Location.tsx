@@ -51,7 +51,7 @@ export default function Location() {
           to="https://www.eshra.dz/?page_id=3089&lang=en"
           className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="text-center flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4">
+          <div className="text-center flex flex-col justify-center items-center gap-2 lg:gap-4">
             <img src={LocationIcon} alt="location_icon" />
             <p className="text-sm sm:text-xl lg:text-3xl font-bold"> ESHRA </p>
             <p className="text-sm sm:text-lg lg:text-2xl font-light"> 6-8 February, 2025 </p>

@@ -80,7 +80,7 @@ export default function TimeDate() {
         animate={controls}
         custom={totalCards} // main card animation starts after the background cards
       >
-        <div className="text-center flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4">
+        <div className="text-center flex flex-col justify-center items-center gap-2 lg:gap-4">
           <img src={TimeDateIcon} alt="time_date_icon" />
           <div className="flex space-x-2 md:space-x-4 lg:space-x-8 justify-center items-center font-['Montserrat']">
             {/* Days Section */}
