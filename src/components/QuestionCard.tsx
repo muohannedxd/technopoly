@@ -79,13 +79,17 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
       className="flex flex-col w-[90vw] sm:w-[70vw] md:w-[60vw] h-auto min-h-[75vh] rounded-[30px] border-[6px] border-black shadow-xl p-4 md:p-6"
       style={{ background: gradient }}
     >
-      <h1 className={`text-lg md:text-2xl font-bold text-center mt-6 ${styles.textColor}`}>
+      <h1
+        className={`text-lg md:text-2xl font-bold text-center mt-6 ${styles.textColor}`}
+      >
         {section}
       </h1>
       <div className="flex flex-col px-4 md:px-10 mt-4 space-y-6 flex-grow">
         {questions.map((q, index) => (
           <div key={index}>
-            <label className={`block text-lg font-semibold mb-2 ${styles.textColor}`}>
+            <label
+              className={`block text-lg font-semibold mb-2 ${styles.textColor}`}
+            >
               {q.label}
             </label>
             {q.type === "dropdown" ? (
@@ -106,9 +110,11 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
                 className={`w-full bg-transparent ${styles.fieldBorder} border-2 p-2 rounded-xl resize-none focus:outline-none ${styles.textColor}`}
-                rows={4}
+                rows={6}
                 maxLength={1600}
-                disabled={isSchoolChanged !== "Other" && q.name === "OtherSchool"}
+                disabled={
+                  isSchoolChanged !== "Other" && q.name === "OtherSchool"
+                }
               />
             ) : (
               <input
@@ -116,11 +122,15 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
                 className={`w-full bg-transparent ${styles.fieldBorder} border-b-2 p-2 rounded-none focus:outline-none ${styles.textColor}`}
-                disabled={isSchoolChanged !== "Other" && q.name === "OtherSchool"}
+                disabled={
+                  isSchoolChanged !== "Other" && q.name === "OtherSchool"
+                }
               />
             )}
             <div className="min-h-[1.5rem]">
-              {errors[q.name] && <p className="text-red-600 text-sm">{errors[q.name]}</p>}
+              {errors[q.name] && (
+                <p className="text-red-600 text-sm">{errors[q.name]}</p>
+              )}
             </div>
           </div>
         ))}
@@ -129,16 +139,24 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         <button
           onClick={onBack}
           disabled={isBackDisabled}
-          className={`border-2 py-2 px-4 rounded-lg w-full md:w-32 ${isBackDisabled ? "opacity-50" : styles.backBtn}`}
+          className={`border-2 py-2 px-4 rounded-lg w-full md:w-32 ${
+            isBackDisabled ? "opacity-50" : styles.backBtn
+          }`}
         >
           Back
         </button>
         <button
           onClick={isNextDisabled ? onSubmit : onNext}
-          className={`py-2 px-4 rounded-lg w-full md:w-32 ${styles.nextBtn} flex justify-center items-center`}
+          className={`py-2 px-4 rounded-lg w-full md:w-32 ${styles.nextBtn} flex justify-center items-center ${isSubmitting && "cursor-not-allowed opacity-50"}`}
           disabled={isSubmitting}
         >
-          {isSubmitting ? <Loader2 className="animate-spin" /> : isNextDisabled ? "Submit" : "Next"}
+          {isSubmitting ? (
+            <Loader2 className="animate-spin" />
+          ) : isNextDisabled ? (
+            "Submit"
+          ) : (
+            "Next"
+          )}
         </button>
       </div>
     </div>
@@ -146,4 +164,3 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 };
 
 export default QuestionCard;
-

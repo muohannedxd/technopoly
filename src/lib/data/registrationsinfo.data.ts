@@ -32,7 +32,7 @@ export const registrationQuestions: {
       { label: "Full Name *", name: "Name", type: "text", value: "" },
       { label: "Email Address *", name: "Email", type: "email", value: "" },
       { label: "Phone Number *", name: "PhoneNumber", type: "text", value: "" },
-      { label: "Student Card Number *", name: "CardNumber", type: "text", value: "" },
+      { label: "Student Card Number (eg: 2121xxxxxxxx) *", name: "CardNumber", type: "text", value: "" },
     ],
   },
   {
