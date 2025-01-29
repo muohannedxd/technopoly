@@ -116,6 +116,12 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                   isSchoolChanged !== "Other" && q.name === "OtherSchool"
                 }
               />
+            ) : q.type === "tags" ? (
+              <TagInput
+                value={Array.isArray(q.value) ? q.value : []}
+                onChange={(tags) => onChange(q.name, tags)}
+                placeholder="Press Enter or click + to add a tag"
+              />
             ) : (
               <input
                 type={q.type}
@@ -157,6 +163,79 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           ) : (
             "Next"
           )}
+        </button>
+      </div>
+    </div>
+  );
+};
+const TagInput: React.FC<{
+  value: string[];
+  onChange: (tags: string[]) => void;
+  placeholder?: string;
+}> = ({ value, onChange, placeholder }) => {
+  const [inputValue, setInputValue] = useState("");
+
+  const handleAddTag = () => {
+    if (inputValue.trim() && !value.includes(inputValue.trim())) {
+      onChange([...value, inputValue.trim()]);
+      setInputValue("");
+    }
+  };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter" && inputValue.trim()) {
+      e.preventDefault();
+      handleAddTag();
+    }
+  };
+
+  const handleRemoveTag = (tag: string) => {
+    onChange(value.filter((t) => t !== tag));
+  };
+
+  return (
+    <div className="flex flex-wrap items-center border-b-2 border-black p-2">
+      {value.map((tag, index) => (
+        <div
+          key={index}
+          className="bg-gray-200 text-black rounded-full px-3 py-1 mr-2 mb-2 flex items-center"
+        >
+          <span>{tag}</span>
+          <button
+            onClick={() => handleRemoveTag(tag)}
+            className="ml-2 text-red-600 hover:text-red-800"
+          >
+            &times;
+          </button>
+        </div>
+      ))}
+      <div className="flex items-center flex-1">
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
+          placeholder={placeholder}
+          className="flex-1 bg-transparent text-black focus:outline-none"
+        />
+        <button
+          onClick={handleAddTag}
+          className="ml-2 text-green-600 hover:text-green-800"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M12 4v16m8-8H4"
+            />
+          </svg>
         </button>
       </div>
     </div>
