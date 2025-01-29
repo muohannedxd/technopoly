@@ -130,6 +130,11 @@ export default function useRegisterViewModel() {
 
     setErrors(finalErrors);
 
+    if (Object.keys(finalErrors).length > 0) {
+      setIsSubmitting(false);
+      return;
+    }
+
     if (Object.keys(finalErrors).length === 0) {
       console.log("Submitting form: ", formData);
 
@@ -147,6 +152,7 @@ export default function useRegisterViewModel() {
           console.log("Data successfully sent to Google Sheets!");
           setFormData({} as RegistrationInfo);
           setIsSubmitting(false);
+          setCurrentIndex(0);
           // navigate("/");
         } else {
           console.error("Failed to send data to Google Sheets.");
