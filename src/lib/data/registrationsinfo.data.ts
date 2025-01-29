@@ -5,7 +5,6 @@ export interface RegistrationInfo {
   School?: string;
   Major?: string;
   YearOfStudy?: string;
-  TeamName?: string;
   Skills?: string[];
   Motivation?: string;
   LinkedInProfile?: string;

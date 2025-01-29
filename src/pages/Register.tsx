@@ -17,6 +17,7 @@ export default function Register() {
     handleNext,
     handleBack,
     handleSubmit,
+    isSubmitting
   } = useRegisterViewModel();
 
   const [animationDirection, setAnimationDirection] = useState<
@@ -41,12 +42,12 @@ export default function Register() {
   };
 
   return (
-    <div className="relative">
-      <Link to="/" className="absolute flex justify-center items-center gap-3 p-4 md:p-6">
+    <div className="flex flex-col">
+      <Link to="/" className="flex gap-3 m-4 md:m-6">
         <ArrowLeft />
         <p className="text-base md:text-lg">Go Back Home</p>
       </Link>
-      <div className="w-full h-screen flex items-center justify-center">
+      <div className="w-full flex py-8 items-center justify-center">
         <div
           className={`transition-transform duration-500 ease-in-out ${
             animationDirection === "next"
@@ -77,6 +78,7 @@ export default function Register() {
             isNextDisabled={currentIndex === registrationQuestions.length - 1}
             isBackDisabled={currentIndex === 0}
             gradient={currentGradient}
+            isSubmitting={isSubmitting}
           />
         </div>
 
@@ -84,7 +86,7 @@ export default function Register() {
           <Smallcard
             key={index}
             gradient={gradientColors[index % gradientColors.length]}
-            position={{ top: "68vh", left: `${75 - index * 2}vw` }}
+            position={{ top: "62vh", left: `${75 - index * 2}vw` }}
             rotation={`${-6 - index * 5}deg`}
           />
         ))}

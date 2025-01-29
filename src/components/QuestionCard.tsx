@@ -1,3 +1,4 @@
+import { Loader2 } from "lucide-react";
 import React, { useState } from "react";
 
 interface QuestionCardProps {
@@ -17,6 +18,7 @@ interface QuestionCardProps {
   isNextDisabled: boolean;
   isBackDisabled: boolean;
   gradient: string;
+  isSubmitting: boolean;
 }
 
 const QuestionCard: React.FC<QuestionCardProps> = ({
@@ -30,6 +32,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
   isNextDisabled,
   isBackDisabled,
   gradient,
+  isSubmitting
 }) => {
   const getStyles = () => {
     if (gradient === "linear-gradient(to right, #F79A02, #F8EEC8)") {
@@ -64,13 +67,13 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
 
   return (
     <div
-      className="flex flex-col h-[70vh] w-[60vw] rounded-[30px] border-[6px] border-black shadow-xl"
+      className="flex flex-col w-[90vw] sm:w-[70vw] md:w-[60vw] rounded-[30px] border-[6px] border-black shadow-xl"
       style={{ background: gradient }}
     >
-      <h1 className={`text-[2rem] font-bold text-center mt-6 ${styles.textColor}`}>
+      <h1 className={`text-lg md:text-2xl font-bold text-center mt-6 ${styles.textColor}`}>
         {section}
       </h1>
-      <div className="flex flex-col px-10 mt-4 space-y-6 flex-grow">
+      <div className="flex flex-col px-4 md:px-10 mt-4 space-y-6 flex-grow">
         {questions.map((q, index) => (
           <div key={index}>
             <label className={`block text-lg font-semibold mb-2 ${styles.textColor}`}>
@@ -102,7 +105,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
                 className={`w-full bg-transparent ${styles.fieldBorder} border-2 p-2 rounded-xl resize-none focus:outline-none ${styles.textColor} `}
-                rows={8}
+                rows={4}
                 maxLength={1600}
                 
               />
@@ -122,11 +125,11 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
           </div>
         ))}
       </div>
-      <div className="flex justify-between px-12 py-16">
+      <div className="flex flex-col-reverse md:flex-row gap-4 md:gap-0 justify-between px-12 py-16">
         <button
           onClick={onBack}
           disabled={isBackDisabled}
-          className={`border-2 py-2 px-4 rounded-lg w-[7vw] ${
+          className={`border-2 py-2 px-4 rounded-lg w-full md:w-32 ${
             isBackDisabled ? "opacity-50" : styles.backBtn
           }`}
         >
@@ -135,14 +138,18 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         {isNextDisabled ? (
           <button
             onClick={onSubmit}
-            className={`py-2 px-4 rounded-lg w-[7vw] ${styles.nextBtn}`}
+            className={`flex gap-1 py-2 px-4 rounded-lg w-full md:w-auto justify-center items-center ${styles.nextBtn} ${isSubmitting && "opacity-50 cursor-not-allowed"}`}
+            disabled={isSubmitting}
           >
+            {
+              isSubmitting && <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+            }
             Submit
           </button>
         ) : (
           <button
             onClick={onNext}
-            className={`py-2 px-4 rounded-lg w-[7vw] ${styles.nextBtn}`}
+            className={`py-2 px-4 rounded-lg w-full md:w-32 ${styles.nextBtn}`}
           >
             Next
           </button>

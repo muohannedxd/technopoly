@@ -5,6 +5,7 @@ import {
 } from "../../lib/data/registrationsinfo.data";
 
 export default function useRegisterViewModel() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<RegistrationInfo>(
     {} as RegistrationInfo
   );
@@ -114,7 +115,8 @@ export default function useRegisterViewModel() {
     }
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setIsSubmitting(true);
     const finalErrors: { [key: string]: string } = {};
 
     registrationQuestions.forEach((section) => {
@@ -130,6 +132,30 @@ export default function useRegisterViewModel() {
 
     if (Object.keys(finalErrors).length === 0) {
       console.log("Submitting form: ", formData);
+
+      try {
+        const response = await fetch("https://sheetdb.io/api/v1/kwjli0gr9dmcp", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formData),
+        });
+        
+
+        if (response.ok) {
+          console.log("Data successfully sent to Google Sheets!");
+          setFormData({} as RegistrationInfo);
+          setIsSubmitting(false);
+          // navigate("/");
+        } else {
+          console.error("Failed to send data to Google Sheets.");
+          setIsSubmitting(false);
+        }
+      } catch (error) {
+        console.error("Error submitting the form: ", error);
+        setIsSubmitting(false);
+      }
     }
   };
 
@@ -144,5 +170,6 @@ export default function useRegisterViewModel() {
     handleNext,
     handleBack,
     handleSubmit,
+    isSubmitting
   };
 }
