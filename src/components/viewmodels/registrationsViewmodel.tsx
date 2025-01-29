@@ -3,6 +3,7 @@ import {
   RegistrationInfo,
   registrationQuestions,
 } from "../../lib/data/registrationsinfo.data";
+import { toast } from "sonner";
 
 export default function useRegisterViewModel() {
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -136,31 +137,42 @@ export default function useRegisterViewModel() {
     }
 
     if (Object.keys(finalErrors).length === 0) {
-      console.log("Submitting form: ", formData);
+      // console.log("Submitting form: ", formData);
 
       try {
-        const response = await fetch("https://sheetdb.io/api/v1/kwjli0gr9dmcp", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
-        
+        const response = await fetch(
+          "https://sheetdb.io/api/v1/kwjli0gr9dmcp",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(formData),
+          }
+        );
 
         if (response.ok) {
           console.log("Data successfully sent to Google Sheets!");
           setFormData({} as RegistrationInfo);
           setIsSubmitting(false);
           setCurrentIndex(0);
+          toast.success("Registered successfully!", {
+            description: "Keep an eye out for updates in your inbox.",
+          });
           // navigate("/");
         } else {
           console.error("Failed to send data to Google Sheets.");
           setIsSubmitting(false);
+          toast.error("Failed to register", {
+            description: "Something is missing, Try again later",
+          });
         }
       } catch (error) {
         console.error("Error submitting the form: ", error);
         setIsSubmitting(false);
+        toast.error("Failed to register!", {
+          description: "An error occured, try again later.",
+        });
       }
     }
   };
@@ -176,6 +188,6 @@ export default function useRegisterViewModel() {
     handleNext,
     handleBack,
     handleSubmit,
-    isSubmitting
+    isSubmitting,
   };
 }

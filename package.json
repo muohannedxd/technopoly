@@ -46,6 +46,7 @@
     "react-router-dom": "^7.1.1",
     "react-router-hash-link": "^2.4.3",
     "react-spinners": "^0.15.0",
+    "sonner": "^1.7.2",
     "tailwind-merge": "^2.4.0",
     "tailwindcss-animate": "^1.0.7"
   },

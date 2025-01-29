@@ -5,6 +5,8 @@ import { registrationQuestions } from "@/lib/data/registrationsinfo.data";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
+import { Toaster } from "sonner";
+
 
 export default function Register() {
   const {
@@ -90,6 +92,9 @@ export default function Register() {
             rotation={`${-6 - index * 5}deg`}
           />
         ))}
+      </div>
+      <div className="h-0 w-0">
+        <Toaster position="bottom-right" expand={false} richColors />
       </div>
     </div>
   );
