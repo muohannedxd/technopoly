@@ -63,10 +63,7 @@ export default function useRegisterViewModel() {
     }
 
     // Optional fields validation (LinkedIn and GitHub/Portfolio links) if provided
-    if (
-      (name === "LinkedInProfile" || name === "GitHubPortfolio") &&
-      typeof value === "string"
-    ) {
+    if (name === "LinkedInProfile" && typeof value === "string") {
       const urlPattern =
         /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/[\w\d-_.~:/?#[\]@!$&'()*+,;=]*)?$/;
       if (value && !urlPattern.test(value)) {
