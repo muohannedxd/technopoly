@@ -61,7 +61,7 @@ export default function TimeDate() {
   }, [targetDate, controls]);
 
   return (
-    <div className="relative h-36 lg:h-44 w-48 sm:w-52 lg:w-72">
+    <div className="relative h-28 lg:h-44 w-40 sm:w-52 lg:w-72">
       {/* render the 4 stacked background cards */}
       {cardColors.map((color, index) => (
         <motion.div
@@ -80,9 +80,9 @@ export default function TimeDate() {
         animate={controls}
         custom={totalCards} // main card animation starts after the background cards
       >
-        <div className="text-center flex flex-col justify-center items-center gap-4">
+        <div className="text-center flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4">
           <img src={TimeDateIcon} alt="time_date_icon" />
-          <div className="flex space-x-4 lg:space-x-8 justify-center items-center font-['Montserrat']">
+          <div className="flex space-x-2 md:space-x-4 lg:space-x-8 justify-center items-center font-['Montserrat']">
             {/* Days Section */}
             <div className="text-center">
               <span className="text-xl lg:text-3xl font-semibold">
@@ -104,7 +104,7 @@ export default function TimeDate() {
               <span className="text-xl lg:text-3xl font-semibold">
                 {timeLeft.minutes}
               </span>
-              <span className="block text-sm">minutes</span>
+              <span className="block text-sm">mins</span>
             </div>
           </div>
         </div>

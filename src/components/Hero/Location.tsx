@@ -28,7 +28,7 @@ export default function Location() {
   const totalCards = 4;
 
   return (
-    <div className="relative h-36 lg:h-44 w-48 sm:w-52 lg:w-72">
+    <div className="relative h-28 lg:h-44 w-40 sm:w-52 lg:w-72">
       {/* render the 4 stacked background cards */}
       {cardColors.map((color, index) => (
         <motion.div
@@ -49,12 +49,12 @@ export default function Location() {
       >
         <Link
           to="https://www.eshra.dz/?page_id=3089&lang=en"
-          className="absolute inset-0 flex items-center justify-center pt-2"
+          className="absolute inset-0 flex items-center justify-center"
         >
-          <div className="text-center flex flex-col justify-center items-center gap-4">
+          <div className="text-center flex flex-col justify-center items-center gap-2 sm:gap-3 md:gap-4">
             <img src={LocationIcon} alt="location_icon" />
-            <p className="text-xl lg:text-3xl font-bold"> ESHRA </p>
-            <p className="text-lg lg:text-2xl font-light"> 6-8 February, 2025 </p>
+            <p className="text-sm sm:text-xl lg:text-3xl font-bold"> ESHRA </p>
+            <p className="text-sm sm:text-lg lg:text-2xl font-light"> 6-8 February, 2025 </p>
           </div>
         </Link>
       </motion.div>
