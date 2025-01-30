@@ -24,15 +24,15 @@ export default function Sponsors() {
           <CarouselContent>
             {SponsorList.map((sponsor) => (
               <CarouselItem key={sponsor.id}>
-                <Link to={sponsor.link}>
-                  <div className="p-0 flex justify-center">
+                <div className="p-0 flex justify-center">
+                  <Link to={sponsor.link}>
                     <img
                       className="w-28 sm:w-40 self-center"
                       src={sponsor.image as string}
                       alt={`Sponsor ${sponsor.id}`}
                     />
-                  </div>
-                </Link>
+                  </Link>
+                </div>
               </CarouselItem>
             ))}
           </CarouselContent>

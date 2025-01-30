@@ -62,7 +62,7 @@ export const registrationQuestions: {
         name: "Major",
         type: "dropdown",
         value: "",
-        options: ["Artificial Intelligence / Computer Science", "Business / Commerce", "Hospitality and Catering"],
+        options: ["Artificial Intelligence / Computer Science", "Business / Commerce", "Hospitality and Catering", "Other"],
       },
       {
         label: "Year of Study *",
