@@ -68,7 +68,7 @@ export const Agenda = () => {
 
       <section className="container pt-16 sm:pt-32 flex justify-center items-center flex-col">
         <div className="relative w-full max-w-4xl min-h-[530px] bg-[#fff4c4] rounded-3xl shadow-lg border-r-[10px] border-b-[20px] border-4 border-black flex flex-col items-center p-6">
-          <h2 className="text-2xl font-semibold mb-8">
+          <h2 className="text-xl md:text-2xl font-semibold mb-8">
             Day {currentDay} - {dayDates[currentDay]}
           </h2>
 
@@ -79,7 +79,7 @@ export const Agenda = () => {
                   {splitDay2Content()
                     .firstHalf.split("\n")
                     .map((line, index) => (
-                      <li key={index} className="mb-2">
+                      <li key={index} className="mb-2 text-base md:text-xl">
                         {line.split(timeRegex).map((part, i) =>
                           isTime(part) ? (
                             <span key={i} className="font-bold">
@@ -96,7 +96,7 @@ export const Agenda = () => {
                   {splitDay2Content()
                     .secondHalf.split("\n")
                     .map((line, index) => (
-                      <li key={index} className="mb-2">
+                      <li key={index} className="mb-2 text-base md:text-xl">
                         {line.split(timeRegex).map((part, i) =>
                           isTime(part) ? (
                             <span key={i} className="font-bold">
@@ -116,7 +116,7 @@ export const Agenda = () => {
                   .split("\n")
                   .filter((line) => line.trim() !== "")
                   .map((line, index) => (
-                    <li key={index} className="mb-2">
+                    <li key={index} className="mb-2 text-base md:text-xl">
                       {line.split(timeRegex).map((part, i) =>
                         isTime(part) ? (
                           <span key={i} className="font-bold">
