@@ -88,7 +88,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         {questions.map((q, index) => (
           <div key={index}>
             <label
-              className={`block text-lg font-semibold mb-2 ${styles.textColor}`}
+              className={`block text-lg font-semibold mb-2 ${styles.textColor} ${isSchoolChanged !== "Other" && q.name === "OtherSchool" && "opacity-50"}`}
             >
               {q.label}
             </label>
@@ -127,7 +127,7 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
                 type={q.type}
                 value={q.value as string}
                 onChange={(e) => onChange(q.name, e.target.value)}
-                className={`w-full bg-transparent ${styles.fieldBorder} border-b-2 p-2 rounded-none focus:outline-none ${styles.textColor}`}
+                className={`w-full bg-transparent ${styles.fieldBorder} ${isSchoolChanged !== "Other" && q.name === "OtherSchool" && "border-opacity-30"} border-b-2 p-2 rounded-none focus:outline-none ${styles.textColor}`}
                 disabled={
                   isSchoolChanged !== "Other" && q.name === "OtherSchool"
                 }
@@ -153,7 +153,11 @@ const QuestionCard: React.FC<QuestionCardProps> = ({
         </button>
         <button
           onClick={isNextDisabled ? onSubmit : onNext}
-          className={`py-2 px-4 rounded-lg w-full md:w-32 ${styles.nextBtn} flex justify-center items-center ${isSubmitting && "cursor-not-allowed opacity-50"}`}
+          className={`py-2 px-4 rounded-lg w-full md:w-32 ${
+            styles.nextBtn
+          } flex justify-center items-center ${
+            isSubmitting && "cursor-not-allowed opacity-50"
+          }`}
           disabled={isSubmitting}
         >
           {isSubmitting ? (
