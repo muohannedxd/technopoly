@@ -7,12 +7,13 @@ import {
   CarouselPrevious,
 } from "./ui/carousel";
 import { Link } from "react-router-dom";
+import Coin from "./Coin";
 
 export default function Sponsors() {
   return (
     <section
       id="sponsors"
-      className="container pt-20 sm:pt-32 pb-14 justify-center items-center flex flex-col gap-20"
+      className="container relative pt-20 sm:pt-32 pb-14 justify-center items-center flex flex-col gap-20"
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">Sponsors</p>
@@ -53,6 +54,9 @@ export default function Sponsors() {
           </Link>
         ))}
       </div>
+      {/** coins and gdg icon */}
+      <Coin position={{ top: "18%", left: "18%", angle: "0" }} rotationDegree={0} />
+      <Coin position={{ top: "100%", left: "68%", angle: "0" }} rotationDegree={-60} />
     </section>
   );
 }

@@ -21,7 +21,9 @@ export default function Register() {
     isSubmitting,
   } = useRegisterViewModel();
 
-  const [animationDirection, setAnimationDirection] = useState<"next" | "back" | "none">("none");
+  const [animationDirection, setAnimationDirection] = useState<
+    "next" | "back" | "none"
+  >("none");
   const [isSchoolChanged, setIsSchoolChanged] = useState<string>("");
 
   useEffect(() => {
@@ -52,7 +54,7 @@ export default function Register() {
   return (
     <div className="w-full h-screen flex flex-col">
       {/* Back Button */}
-      <Link to="/" className="flex gap-3 m-4 md:m-6">
+      <Link to="/" className="flex items-center gap-3 m-4 md:m-6">
         <ArrowLeft />
         <p className="text-base md:text-lg">Go Back Home</p>
       </Link>
@@ -75,10 +77,12 @@ export default function Register() {
         >
           <QuestionCard
             section={registrationQuestions[currentIndex].section}
-            questions={registrationQuestions[currentIndex].questions.map((q) => ({
-              ...q,
-              value: formData[q.name] || q.value,
-            }))}
+            questions={registrationQuestions[currentIndex].questions.map(
+              (q) => ({
+                ...q,
+                value: formData[q.name] || q.value,
+              })
+            )}
             errors={errors}
             onChange={handleInputChange}
             onNext={handleNextClick}
@@ -93,14 +97,16 @@ export default function Register() {
         </div>
 
         {/* Small Cards */}
-        {smallCards.map((_, index) => (
-          <Smallcard
-            key={index}
-            gradient={gradientColors[index % gradientColors.length]}
-            position={{ top: "62vh", left: `${75 - index * 2}vw` }}
-            rotation={`${-6 - index * 5}deg`}
-          />
-        ))}
+        <div className="hidden sm:flex">
+          {smallCards.map((_, index) => (
+            <Smallcard
+              key={index}
+              gradient={gradientColors[index % gradientColors.length]}
+              position={{ top: "62vh", left: `${75 - index * 2}vw` }}
+              rotation={`${-6 - index * 5}deg`}
+            />
+          ))}
+        </div>
       </div>
 
       {/* Toaster Notifications */}

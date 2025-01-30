@@ -5,12 +5,13 @@ import {
   AccordionTrigger,
 } from "@/components/ui/accordion";
 import { FAQList, FAQProps } from "@/lib/data/faq.data";
+import Coin from "./Coin";
 
 export const FAQ = () => {
   return (
     <section
       id="faq"
-      className="container pt-24 pb-14 sm:pb-20 sm:pt-30 justify-center items-center flex flex-col gap-8" 
+      className="container relative pt-24 pb-14 sm:pb-20 sm:pt-30 justify-center items-center flex flex-col gap-8" 
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title">FAQ</p>
@@ -31,6 +32,10 @@ export const FAQ = () => {
           </AccordionItem>
         ))}
       </Accordion>
+      {/** coins and gdg icon */}
+      <Coin position={{ top: "18%", left: "0%", angle: "0" }} rotationDegree={-10} />
+      <Coin position={{ top: "52%", left: "69vw", angle: "0" }} rotationDegree={-40} />
+      <Coin position={{ top: "84%", left: "0%", angle: "0" }} rotationDegree={60} />
     </section>
   );
 };

@@ -4,6 +4,8 @@ import AboutCard from "./AboutCard";
 import Quote from "@/assets/icons/initial_quote.png";
 import Dice from "@/assets/images/aboutDice.png";
 import "@/assets/CSS/About.css"
+import Coin from "../Coin";
+import GDGIcon from "../GDGIcon";
 
 export default function About() {
   const [selectedId, setSelectedId] = useState(0);
@@ -43,7 +45,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="container pt-16 sm:pt-32 pb-[36vh] sm:pb-[42vh] justify-center items-center flex flex-col gap-8"
+      className="relative container pt-16 sm:pt-32 pb-[36vh] sm:pb-[42vh] justify-center items-center flex flex-col gap-8"
     >
       <div className="text-center flex flex-col gap-4">
         <p className="text-title"> About Us </p>
@@ -109,6 +111,9 @@ export default function About() {
           <img src={Dice} alt="dice" />
         </div>
       </div>
+      {/** coins and gdg icon */}
+      <Coin position={{ top: "8%", left: "10%", angle: "0" }} rotationDegree={0} />
+      <GDGIcon position={{ top: "16%", right: "18px", angle: "0" }} rotationDegree={0} />
     </section>
   );
 }
