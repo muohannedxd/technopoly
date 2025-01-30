@@ -11,7 +11,9 @@ export const Agenda = () => {
   };
 
   const splitDay2Content = () => {
-    const lines = dayContent[2].split("\n").filter((line) => line.trim() !== "");
+    const lines = dayContent[2]
+      .split("\n")
+      .filter((line) => line.trim() !== "");
     const midPoint = Math.ceil(lines.length / 2);
     const firstHalf = lines.slice(0, midPoint).join("\n");
     const secondHalf = lines.slice(midPoint).join("\n");
@@ -23,6 +25,10 @@ export const Agenda = () => {
     2: "February 7, 2025 (Friday)",
     3: "February 8, 2025 (Saturday)",
   };
+
+  // Regex to match time patterns like "15:00 - 16:00:"
+  const timeRegex = /(\d{2}:\d{2}(?: - \d{2}:\d{2})?:)/g;
+  const isTime = (s: string) => /^\d{2}:\d{2}(?: - \d{2}:\d{2})?:$/.test(s);
 
   return (
     <div
@@ -61,7 +67,7 @@ export const Agenda = () => {
       </div>
 
       <section className="container pt-16 sm:pt-32 flex justify-center items-center flex-col">
-        <div className="relative w-full max-w-4xl h-[550px] bg-[#fff4c4] rounded-3xl shadow-lg border-r-[10px] border-b-[20px] border-4 border-black flex flex-col items-center p-6">
+        <div className="relative w-full max-w-4xl min-h-[530px] bg-[#fff4c4] rounded-3xl shadow-lg border-r-[10px] border-b-[20px] border-4 border-black flex flex-col items-center p-6">
           <h2 className="text-2xl font-semibold mb-8">
             Day {currentDay} - {dayDates[currentDay]}
           </h2>
@@ -74,15 +80,14 @@ export const Agenda = () => {
                     .firstHalf.split("\n")
                     .map((line, index) => (
                       <li key={index} className="mb-2">
-                        {line.startsWith("-") ? (
-                          <>
-                            <span className="font-bold">
-                              {line.split(":")[0].trim()}
+                        {line.split(timeRegex).map((part, i) =>
+                          isTime(part) ? (
+                            <span key={i} className="font-bold">
+                              {part}
                             </span>
-                            : {line.split(":").slice(1).join(":").trim()}
-                          </>
-                        ) : (
-                          line
+                          ) : (
+                            part
+                          )
                         )}
                       </li>
                     ))}
@@ -92,15 +97,14 @@ export const Agenda = () => {
                     .secondHalf.split("\n")
                     .map((line, index) => (
                       <li key={index} className="mb-2">
-                        {line.startsWith("-") ? (
-                          <>
-                            <span className="font-bold">
-                              {line.split(":")[0].trim()}
+                        {line.split(timeRegex).map((part, i) =>
+                          isTime(part) ? (
+                            <span key={i} className="font-bold">
+                              {part}
                             </span>
-                            : {line.split(":").slice(1).join(":").trim()}
-                          </>
-                        ) : (
-                          line
+                          ) : (
+                            part
+                          )
                         )}
                       </li>
                     ))}
@@ -113,15 +117,14 @@ export const Agenda = () => {
                   .filter((line) => line.trim() !== "")
                   .map((line, index) => (
                     <li key={index} className="mb-2">
-                      {line.startsWith("-") ? (
-                        <>
-                          <span className="font-bold">
-                            {line.split(":")[0].trim()}
+                      {line.split(timeRegex).map((part, i) =>
+                        isTime(part) ? (
+                          <span key={i} className="font-bold">
+                            {part}
                           </span>
-                          : {line.split(":").slice(1).join(":").trim()}
-                        </>
-                      ) : (
-                        line
+                        ) : (
+                          part
+                        )
                       )}
                     </li>
                   ))}

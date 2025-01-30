@@ -53,7 +53,7 @@ export const AboutUsList: AboutProps[] = [
     description: `
       Motivation, innovation, and discipline—these are the core
       values that best define this exceptional club. Based at the
-      Ecole des Hautes Etudes Commerciales (EHEC) of Koléa
+      School of Higher Commercial Studies (EHEC) of Koléa
       (formerly INC), the club brings together students from
       diverse backgrounds, united by a thirst for learning and
       mastering new entrepreneurial and cultural topics. They share
@@ -66,7 +66,13 @@ export const AboutUsList: AboutProps[] = [
     image: HRM,
     background: "bg-red-400",
     borderColor: "border-red-400",
-    description:
-      "HRM Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec facilisis leo eget tortor lacinia, vitae egestas risus pretium. Integer id tincidunt risus, et consectetur tellus. Duis turpis metus, vulputate et leo vitae, pretium eleifend lacus. Nunc ornare, metus nec vestibulum lobortis, purus ante feugiat leo, sit amet iaculis massa ipsum et lorem. ",
+    description: `
+      HRM Club is The heart of students life at the School of Hotel
+      & Restaurant Management in Algiers, bringing together future
+      hospitality professionals with a shared passion for the industry. However, it
+      is not just about hotels and restaurants—we mix things up with
+      cultural events, sports, and community activities too. With an energetic and
+      ambitious vibe, we, at HRM Club, turn learning into an exciting journey and experience!
+    `
   },
 ];
