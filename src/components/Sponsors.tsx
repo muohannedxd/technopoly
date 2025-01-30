@@ -43,20 +43,26 @@ export default function Sponsors() {
       {/** normal for desktop */}
       <div className="hidden md:flex md:flex-row justify-around items-center gap-16 lg:gap-40">
         {SponsorList.map((sponsor) => (
-          <Link to={sponsor.link} key={sponsor.id}>
-            <div key={sponsor.id}>
+          <div key={sponsor.id}>
+            <Link to={sponsor.link}>
               <img
                 className="w-28 sm:w-40"
                 src={sponsor.image as string}
                 alt={`Sponsor ${sponsor.id}`}
               />
-            </div>
-          </Link>
+            </Link>
+          </div>
         ))}
       </div>
       {/** coins and gdg icon */}
-      <Coin position={{ top: "18%", left: "18%", angle: "0" }} rotationDegree={0} />
-      <Coin position={{ top: "100%", left: "68%", angle: "0" }} rotationDegree={-60} />
+      <Coin
+        position={{ top: "18%", left: "18%", angle: "0" }}
+        rotationDegree={0}
+      />
+      <Coin
+        position={{ top: "100%", left: "68%", angle: "0" }}
+        rotationDegree={-60}
+      />
     </section>
   );
 }
