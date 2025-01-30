@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "./ui/carousel";
+import { Link } from "react-router-dom";
 
 export default function Sponsors() {
   return (
@@ -22,13 +23,15 @@ export default function Sponsors() {
           <CarouselContent>
             {SponsorList.map((sponsor) => (
               <CarouselItem key={sponsor.id}>
-                <div className="p-0 flex justify-center">
-                  <img
-                    className="w-36 sm:w-48 self-center"
-                    src={sponsor.image as string}
-                    alt={`Sponsor ${sponsor.id}`}
-                  />
-                </div>
+                <Link to={sponsor.link}>
+                  <div className="p-0 flex justify-center">
+                    <img
+                      className="w-28 sm:w-40 self-center"
+                      src={sponsor.image as string}
+                      alt={`Sponsor ${sponsor.id}`}
+                    />
+                  </div>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>
@@ -39,9 +42,15 @@ export default function Sponsors() {
       {/** normal for desktop */}
       <div className="hidden md:flex md:flex-row justify-around items-center gap-16 lg:gap-40">
         {SponsorList.map((sponsor) => (
-          <div key={sponsor.id}>
-            <img src={sponsor.image as string} alt={`Sponsor ${sponsor.id}`} />
-          </div>
+          <Link to={sponsor.link} key={sponsor.id}>
+            <div key={sponsor.id}>
+              <img
+                className="w-28 sm:w-40"
+                src={sponsor.image as string}
+                alt={`Sponsor ${sponsor.id}`}
+              />
+            </div>
+          </Link>
         ))}
       </div>
     </section>

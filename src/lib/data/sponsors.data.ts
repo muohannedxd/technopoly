@@ -1,21 +1,27 @@
-import Technopoly from "@/assets/logo/Inline_Dark_Transparent_PNG.png"
+import Tassili from "@/assets/images/tassili.png"
+import Amour from "@/assets/images/amour.png"
+import Hassnaoui from "@/assets/images/hassnaoui.png"
 
 export interface SponsorProps {
   id: number;
   image: ImageData | string;
+  link: string
 }
 
 export const SponsorList: SponsorProps[] = [
   {
     id: 0,
-    image: Technopoly,
+    image: Tassili,
+    link: 'https://tassilitravailaerien.dz/'
   },
   {
     id: 1,
-    image: Technopoly,
+    image: Amour,
+    link: 'https://groupeamour.com/'
   },
   {
     id: 2,
-    image: Technopoly,
+    image: Hassnaoui,
+    link: 'https://www.groupe-hasnaoui.com/fr/'
   },
 ];
