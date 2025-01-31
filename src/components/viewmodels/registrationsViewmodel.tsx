@@ -17,13 +17,10 @@ export default function useRegisterViewModel() {
   );
   const [isAnimating, setIsAnimating] = useState(false);
 
-
-
   const gradients = [
     "linear-gradient(to right, #F79A02, #F8EEC8)",
     "linear-gradient(to right, #009EFF, #8A2BE2)",
   ];
-  
 
   const validateField = (
     name: keyof RegistrationInfo,
@@ -31,20 +28,25 @@ export default function useRegisterViewModel() {
   ): string | null => {
     // Trim the value before validation
     const trimmedValue = typeof value === "string" ? value.trim() : value;
-  
+
     // Check if the field is empty
-    if (!trimmedValue || (typeof trimmedValue === "string" && !trimmedValue.trim())) {
+    if (
+      !trimmedValue ||
+      (typeof trimmedValue === "string" && !trimmedValue.trim())
+    ) {
       // Allow optional fields to be empty
       if (
         name === "LinkedInProfile" ||
         name === "GitHubPortfolio" ||
-        (name === "OtherSchool" && formData.School && formData.School !== "Other")
+        (name === "OtherSchool" &&
+          formData.School &&
+          formData.School !== "Other")
       ) {
         return null;
       }
       return `${name} is required.`;
     }
-  
+
     // Name validation (full name with at least two words, letters, hyphens, and apostrophes allowed)
     if (
       name === "Name" &&
@@ -53,7 +55,7 @@ export default function useRegisterViewModel() {
     ) {
       return "Please enter a valid full name (at least two words, letters only, may include hyphens or apostrophes).";
     }
-  
+
     // Email validation
     if (
       name === "Email" &&
@@ -62,7 +64,7 @@ export default function useRegisterViewModel() {
     ) {
       return "Invalid email format.";
     }
-  
+
     // Phone number validation (only digits allowed)
     if (
       name === "PhoneNumber" &&
@@ -71,23 +73,31 @@ export default function useRegisterViewModel() {
     ) {
       return "Phone number should only contain digits.";
     }
-  
-    // Student Card Number validation (must be exactly 12 characters)
+
+    // Student Card Number validation (must be exactly 12 digits)
     if (
       name === "CardNumber" &&
       typeof trimmedValue === "string" &&
-      trimmedValue.length !== 12
+      !/^\d{12}$/.test(trimmedValue)
     ) {
-      return "Student Card Number must be exactly 12 characters long.";
+      return "Student Card Number must be exactly 12 digits long and contain only numbers.";
     }
-  
+
     // OtherSchool should be empty if School is not "Other"
-    if (name === "OtherSchool" && formData.School && formData.School !== "Other") {
-      if (trimmedValue && typeof trimmedValue === "string" && trimmedValue.trim()) {
+    if (
+      name === "OtherSchool" &&
+      formData.School &&
+      formData.School !== "Other"
+    ) {
+      if (
+        trimmedValue &&
+        typeof trimmedValue === "string" &&
+        trimmedValue.trim()
+      ) {
         return "OtherSchool should be empty when School is not 'Other'.";
       }
     }
-  
+
     // LinkedIn Profile URL validation (optional but should be valid if provided)
     if (name === "LinkedInProfile" && typeof trimmedValue === "string") {
       const urlPattern =
@@ -96,11 +106,9 @@ export default function useRegisterViewModel() {
         return "Invalid URL format.";
       }
     }
-  
+
     return null;
-  };  
-  
-  
+  };
 
   const handleInputChange = (name: string, value: string | string[]) => {
     const error = validateField(name as keyof RegistrationInfo, value);
