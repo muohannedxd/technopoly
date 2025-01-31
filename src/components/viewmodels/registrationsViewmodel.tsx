@@ -29,9 +29,12 @@ export default function useRegisterViewModel() {
     name: keyof RegistrationInfo,
     value: string | string[]
   ): string | null => {
-    // Check if the field is empty or contains just whitespace
-    if (!value || (typeof value === "string" && !value.trim())) {
-      // If the field is "LinkedIn Profile", "GitHub/Portfolio Link", or "OtherSchool" when School is not "Other", it's optional, so don't return an error
+    // Trim the value before validation
+    const trimmedValue = typeof value === "string" ? value.trim() : value;
+  
+    // Check if the field is empty
+    if (!trimmedValue || (typeof trimmedValue === "string" && !trimmedValue.trim())) {
+      // Allow optional fields to be empty
       if (
         name === "LinkedInProfile" ||
         name === "GitHubPortfolio" ||
@@ -41,12 +44,12 @@ export default function useRegisterViewModel() {
       }
       return `${name} is required.`;
     }
-
-    // Name validation
+  
+    // Name validation (full name with at least two words, letters, hyphens, and apostrophes allowed)
     if (
       name === "Name" &&
-      typeof value === "string" &&
-      !/^[a-zA-ZÀ-ÖØ-öø-ÿ'-]+(?:\s[a-zA-ZÀ-ÖØ-öø-ÿ'-]+)+$/.test(value)
+      typeof trimmedValue === "string" &&
+      !/^[a-zA-ZÀ-ÖØ-öø-ÿ'-]+(?:\s[a-zA-ZÀ-ÖØ-öø-ÿ'-]+)+$/.test(trimmedValue)
     ) {
       return "Please enter a valid full name (at least two words, letters only, may include hyphens or apostrophes).";
     }
@@ -54,48 +57,48 @@ export default function useRegisterViewModel() {
     // Email validation
     if (
       name === "Email" &&
-      typeof value === "string" &&
-      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(value)
+      typeof trimmedValue === "string" &&
+      !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(trimmedValue)
     ) {
       return "Invalid email format.";
     }
   
-    // Phone number validation
+    // Phone number validation (only digits allowed)
     if (
       name === "PhoneNumber" &&
-      typeof value === "string" &&
-      !/^\d+$/.test(value)
+      typeof trimmedValue === "string" &&
+      !/^\d+$/.test(trimmedValue)
     ) {
       return "Phone number should only contain digits.";
     }
   
-    // Student Card Number validation (length 12)
+    // Student Card Number validation (must be exactly 12 characters)
     if (
       name === "CardNumber" &&
-      typeof value === "string" &&
-      value.length !== 12
+      typeof trimmedValue === "string" &&
+      trimmedValue.length !== 12
     ) {
       return "Student Card Number must be exactly 12 characters long.";
     }
   
-    // OtherSchool validation when School is not "Other"
+    // OtherSchool should be empty if School is not "Other"
     if (name === "OtherSchool" && formData.School && formData.School !== "Other") {
-      if (value && typeof value === "string" && value.trim()) {
+      if (trimmedValue && typeof trimmedValue === "string" && trimmedValue.trim()) {
         return "OtherSchool should be empty when School is not 'Other'.";
       }
     }
   
-    // Optional fields validation (LinkedIn and GitHub/Portfolio links) if provided
-    if (name === "LinkedInProfile" && typeof value === "string") {
+    // LinkedIn Profile URL validation (optional but should be valid if provided)
+    if (name === "LinkedInProfile" && typeof trimmedValue === "string") {
       const urlPattern =
         /^(https?:\/\/)?([\w\d-]+\.)+[\w\d]{2,}(\/[\w\d-_.~:/?#[\]@!$&'()*+,;=]*)?$/;
-      if (value && !urlPattern.test(value)) {
+      if (trimmedValue && !urlPattern.test(trimmedValue)) {
         return "Invalid URL format.";
       }
     }
   
     return null;
-  };
+  };  
   
   
 
