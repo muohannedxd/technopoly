@@ -29,7 +29,7 @@ export const Footer = () => {
             <img src={Gmail} alt="Gmail" />
           </a>
           <Link
-            to="https://discord.gg/Tk8xG3T8"
+            to="https://discord.gg/PBcXJ8h2rc"
             className="w-10 md:w-16 hover:scale-105 transition-all duration-300"
           >
             <img src={Discord} alt="Discord" />
