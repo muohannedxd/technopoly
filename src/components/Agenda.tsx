@@ -10,6 +10,10 @@ export const Agenda = () => {
     setCurrentDay((prev) => (prev === 3 ? 1 : prev + 1));
   };
 
+  const handlePointClick = (day: number) => {
+    setCurrentDay(day);
+  };
+
   const splitDay2Content = () => {
     const lines = dayContent[2]
       .split("\n")
@@ -26,7 +30,6 @@ export const Agenda = () => {
     3: "February 8, 2025 (Saturday)",
   };
 
-  // Regex to match time patterns like "15:00 - 16:00:"
   const timeRegex = /(\d{2}:\d{2}(?: - \d{2}:\d{2})?:)/g;
   const isTime = (s: string) => /^\d{2}:\d{2}(?: - \d{2}:\d{2})?:$/.test(s);
 
@@ -46,8 +49,8 @@ export const Agenda = () => {
         {[1, 2, 3].map((day) => (
           <span
             key={day}
-            className="w-6 h-6 rounded-full shadow-md border-2 border-black"
-            style={{ backgroundColor: "#FBBC04" }}
+            className={`w-6 h-6 rounded-full shadow-md border-2 border-black cursor-pointer bg-[#FBBC04]`}
+            onClick={() => handlePointClick(day)}
           ></span>
         ))}
 
