@@ -22,12 +22,12 @@ export const Footer = () => {
         </div>
 
         <div className="flex pt-20 pb-12 gap-12 md:gap-20 items-center">
-          <Link
-            to="mailto:gdg@ensia.edu.dz"
+          <a
+            href="mailto:gdg@ensia.edu.dz"
             className="w-10 md:w-16 hover:scale-105 transition-all duration-300"
           >
             <img src={Gmail} alt="Gmail" />
-          </Link>
+          </a>
           <Link
             to="https://discord.gg/Tk8xG3T8"
             className="w-10 md:w-16 hover:scale-105 transition-all duration-300"
