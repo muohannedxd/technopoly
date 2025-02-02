@@ -67,7 +67,7 @@ export const AboutUsList: AboutProps[] = [
     background: "bg-red-400",
     borderColor: "border-red-400",
     description: `
-      HRM Club is The heart of students life at the School of Hotel
+      HRM Club is The heart of students life at the School of Hospitality
       & Restaurant Management in Algiers, bringing together future
       hospitality professionals with a shared passion for the industry. However, it
       is not just about hotels and restaurants—we mix things up with

@@ -13,7 +13,7 @@ export const FAQList: FAQProps[] = [
   {
     question: "How are the teams formed, and do I need to have a team before registering?",
     answer:
-      "You will tackle challenges that require technical prototyping and business-focused strategies. Thus, teams are a mix of both. And, not necessarily having a team pre-registration.",
+      "You will tackle challenges that require technical prototyping and business-focused strategies. Thus, teams are a mix of both. And, teams will be assigned randomly to reflect real-world environments.",
     value: "item-2",
   },
   {
