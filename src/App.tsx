@@ -10,7 +10,7 @@ function App() {
   /**
    * turn this to true when registrations are done
    */
-  const isClosedRegistratins = false;
+  const isClosedRegistratins = true;
 
   return (
     <>
