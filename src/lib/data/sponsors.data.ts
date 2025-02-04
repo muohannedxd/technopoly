@@ -1,7 +1,7 @@
 import Tassili from "@/assets/images/tassili.png"
 import Amour from "@/assets/images/amour.png"
 import Hassnaoui from "@/assets/images/hassnaoui.png"
-import MegaAgri from "@/assets/images/megaargri.png"
+// import MegaAgri from "@/assets/images/megaargri.png"
 
 export interface SponsorProps {
   id: number;
