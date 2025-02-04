@@ -25,9 +25,9 @@ export const SponsorList: SponsorProps[] = [
     image: Hassnaoui,
     link: 'https://www.groupe-hasnaoui.com/fr/'
   },
-  {
-    id: 3,
-    image: MegaAgri,
-    link: 'https://mega-agri.com/'
-  },
+  // {
+  //   id: 3,
+  //   image: MegaAgri,
+  //   link: 'https://mega-agri.com/'
+  // },
 ];
